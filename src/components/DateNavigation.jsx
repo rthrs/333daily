@@ -1,36 +1,14 @@
 import React from 'react'
 import { useTheme } from '../contexts/ThemeContext'
+import { getDateFlags } from '../utils/dateUtils'
+import { getBorderStyles, getInputStyles } from '../utils/styleUtils'
 
 const DateNavigation = ({ currentDate, onDateChange }) => {
   const { isDark } = useTheme()
-  const today = new Date().toISOString().split('T')[0]
-  const yesterday = new Date(new Date().getTime() - 24 * 60 * 60 * 1000).toISOString().split('T')[0]
-  const tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toISOString().split('T')[0]
-  
-  const isToday = currentDate === today
-  const isYesterday = currentDate === yesterday
-  const isTomorrow = currentDate === tomorrow
-  const isPast = new Date(currentDate) < new Date(today)
-  const isFuture = new Date(currentDate) > new Date(today)
 
-  const getBorderStyles = () => {
-    if (isToday) return 'border-green-300 dark:border-green-600'
-    if (isYesterday) return 'border-orange-300 dark:border-orange-600'
-    if (isTomorrow) return 'border-blue-300 dark:border-blue-600'
-    if (isPast) return 'border-yellow-300 dark:border-yellow-600'
-    return 'border-purple-300 dark:border-purple-600'
-  }
-
-  const getInputStyles = () => {
-    if (isToday) return 'border-green-300 dark:border-green-600 focus:border-green-500 dark:focus:border-green-400 focus:ring-green-500 dark:focus:ring-green-400'
-    if (isYesterday) return 'border-orange-300 dark:border-orange-600 focus:border-orange-500 dark:focus:border-orange-400 focus:ring-orange-500 dark:focus:ring-orange-400'
-    if (isTomorrow) return 'border-blue-300 dark:border-blue-600 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-blue-500 dark:focus:ring-blue-400'
-    if (isPast) return 'border-yellow-300 dark:border-yellow-600 focus:border-yellow-500 dark:focus:border-yellow-400 focus:ring-yellow-500 dark:focus:ring-yellow-400'
-    return 'border-purple-300 dark:border-purple-600 focus:border-purple-500 dark:focus:border-purple-400 focus:ring-purple-500 dark:focus:ring-purple-400'
-  }
-
-  const borderStyles = getBorderStyles()
-  const inputStyles = getInputStyles()
+  const dateFlags = getDateFlags(currentDate)
+  const borderStyles = getBorderStyles(dateFlags)
+  const inputStyles = getInputStyles(dateFlags)
 
   return (
     <div className="flex items-center justify-center space-x-1">          

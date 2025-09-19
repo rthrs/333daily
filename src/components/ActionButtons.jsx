@@ -1,25 +1,11 @@
 import React from 'react'
+import { getToday, getDateFlags } from '../utils/dateUtils'
+import { getBorderStyles } from '../utils/styleUtils'
 
 const ActionButtons = ({ currentDate, onDateChange, onClearAll }) => {
-  const today = new Date().toISOString().split('T')[0]
-  const yesterday = new Date(new Date().getTime() - 24 * 60 * 60 * 1000).toISOString().split('T')[0]
-  const tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toISOString().split('T')[0]
-  
-  const isToday = currentDate === today
-  const isYesterday = currentDate === yesterday
-  const isTomorrow = currentDate === tomorrow
-  const isPast = new Date(currentDate) < new Date(today)
-  const isFuture = new Date(currentDate) > new Date(today)
-
-  const getBorderStyles = () => {
-    if (isToday) return 'border-green-300 dark:border-green-600'
-    if (isYesterday) return 'border-orange-300 dark:border-orange-600'
-    if (isTomorrow) return 'border-blue-300 dark:border-blue-600'
-    if (isPast) return 'border-yellow-300 dark:border-yellow-600'
-    return 'border-purple-300 dark:border-purple-600'
-  }
-
-  const borderStyles = getBorderStyles()
+  const today = getToday()
+  const dateFlags = getDateFlags(currentDate)
+  const borderStyles = getBorderStyles(dateFlags)
 
   return (
     <div className="flex items-center justify-center gap-2">
