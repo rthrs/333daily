@@ -37,7 +37,7 @@ const Header = ({
       </div>
       
       {/* Date indicator with context - always present to prevent layout shift */}
-      <div className={`mb-6 py-4 px-6 rounded-lg ${
+      <div className={`mb-6 py-4 px-6 rounded-lg space-y-2 ${
         isToday 
           ? 'bg-green-100 dark:bg-green-900 border border-green-200 dark:border-green-700'
           : isYesterday
@@ -49,7 +49,7 @@ const Header = ({
             : 'bg-purple-100 dark:bg-purple-900 border border-purple-200 dark:border-purple-700'
       }`}>
         {/* Day label and date */}
-        <div className="text-center mb-4">
+        <div className="text-center ">
           <div className={`text-lg font-bold ${
             isToday 
               ? 'text-green-800 dark:text-green-200'
@@ -75,8 +75,7 @@ const Header = ({
         </div>
 
         {/* Date selector with navigation */}
-        <div className="flex items-center justify-center space-x-4">
-          
+        <div className="flex items-center justify-center space-x-1">          
           {/* Previous day button */}
           <button
             onClick={() => {
@@ -147,19 +146,13 @@ const Header = ({
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
+
         </div>
-      </div>
 
-
-    
-
-      {/* Clear button - always present to prevent layout shift */}
-      <div className="h-8 flex items-center justify-center mb-6 gap-4">
-         {/* Today button - always present to prevent layout shift */}
-         <div className="h-8 flex items-center justify-center">
-              <button
+        <div className="flex items-center justify-center gap-2">
+        <button
                 onClick={() => onDateChange(today)}
-                className={`px-3 py-2 text-sm font-medium bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg transition-colors duration-200 border ${
+                className={` px-3 py-2 text-sm font-medium bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg transition-colors duration-200 border ${
                   isToday 
                     ? 'border-green-300 dark:border-green-600'
                     : isYesterday
@@ -174,9 +167,9 @@ const Header = ({
               >
                 ✨ Go To Today
               </button>
-          </div>
 
-            <button
+
+          <button
               onClick={onClearAll}
               className={`px-3 py-2 text-sm font-medium bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg transition-colors duration-200 border ${
                 isToday 
@@ -192,6 +185,7 @@ const Header = ({
             >
               🗑️ Clear All Tasks
             </button>
+        </div>
       </div>
 
       {/* Progress indicator */}
