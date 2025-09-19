@@ -1,8 +1,10 @@
 import React from 'react'
+import { useDateContext } from '../contexts/DateContext'
 import { getDateFlags, formatDate } from '../utils/dateUtils'
 import { getLabelColor } from '../utils/styleUtils'
 
-const ProgressIndicator = ({ completionPercentage, currentDate }) => {
+const ProgressIndicator = ({ completionPercentage }) => {
+  const { currentDate } = useDateContext()
   const dateFlags = getDateFlags(currentDate)
 
   return (

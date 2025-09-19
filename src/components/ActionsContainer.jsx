@@ -1,8 +1,10 @@
 import React from 'react'
+import { useDateContext } from '../contexts/DateContext'
 import { getDateFlags, getDayLabel } from '../utils/dateUtils'
 import { getDayStyles } from '../utils/styleUtils'
 
-const ActionsContainer = ({ currentDate, children }) => {
+const ActionsContainer = ({ children }) => {
+  const { currentDate } = useDateContext()
   const dateFlags = getDateFlags(currentDate)
   const styles = getDayStyles(dateFlags)
 

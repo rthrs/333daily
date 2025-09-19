@@ -1,4 +1,5 @@
 import React from 'react'
+import { useDateContext } from '../contexts/DateContext'
 import { formatTime, getTimeProgress, TARGETS } from '../utils/timeUtils'
 
 const ProjectCategory = ({ 
@@ -13,9 +14,9 @@ const ProjectCategory = ({
   currentTimer,
   onStartTimer,
   onToggleTask,
-  onUpdateTask,
-  currentDate
+  onUpdateTask
 }) => {
+  const { currentDate } = useDateContext()
   const progress = getTimeProgress(timeSpent, timeTarget)
 
   return (

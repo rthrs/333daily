@@ -1,4 +1,5 @@
 import React from 'react'
+import { useDateContext } from '../contexts/DateContext'
 
 const TaskCategory = ({ 
   title, 
@@ -8,9 +9,10 @@ const TaskCategory = ({
   category, 
   color,
   onToggleTask,
-  onUpdateTask,
-  currentDate
+  onUpdateTask
 }) => {
+  const { currentDate } = useDateContext()
+  
   return (
     <div className="card dark:bg-gray-800 dark:border-gray-700">
       <h3 className={`text-lg font-semibold mb-4 ${color} ${

@@ -1,23 +1,29 @@
 import React from 'react'
 import { useTheme } from '../contexts/ThemeContext'
+import { useDateContext } from '../contexts/DateContext'
 import { getDateFlags } from '../utils/dateUtils'
 import { getBorderStyles, getInputStyles } from '../utils/styleUtils'
 
-const DateNavigation = ({ currentDate, onDateChange }) => {
+const DateNavigation = ({ onDateChange }) => {
   const { isDark } = useTheme()
-
+  const { currentDate, goToPreviousDay, goToNextDay, handleDateChange } = useDateContext()
+  
   const dateFlags = getDateFlags(currentDate)
   const borderStyles = getBorderStyles(dateFlags)
   const inputStyles = getInputStyles(dateFlags)
+
+  const handleDateInputChange = (newDate) => {
+    handleDateChange(newDate)
+    onDateChange && onDateChange(newDate)
+  }
 
   return (
     <div className="flex items-center justify-center space-x-1">          
       {/* Previous day button */}
       <button
         onClick={() => {
-          const prevDate = new Date(currentDate)
-          prevDate.setDate(prevDate.getDate() - 1)
-          onDateChange(prevDate.toISOString().split('T')[0])
+          const newDate = goToPreviousDay()
+          onDateChange && onDateChange(newDate)
         }}
         className={`p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 border ${borderStyles}`}
         title="Previous day"
@@ -31,7 +37,7 @@ const DateNavigation = ({ currentDate, onDateChange }) => {
         type="date"
         id="date"
         value={currentDate}
-        onChange={(e) => onDateChange(e.target.value)}
+        onChange={(e) => handleDateInputChange(e.target.value)}
         className={`input-field w-auto dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:placeholder-gray-400 pl-4 ${inputStyles}`}
         style={{
           colorScheme: isDark ? 'dark' : 'light'
@@ -41,9 +47,8 @@ const DateNavigation = ({ currentDate, onDateChange }) => {
       {/* Next day button */}
       <button
         onClick={() => {
-          const nextDate = new Date(currentDate)
-          nextDate.setDate(nextDate.getDate() + 1)
-          onDateChange(nextDate.toISOString().split('T')[0])
+          const newDate = goToNextDay()
+          onDateChange && onDateChange(newDate)
         }}
         className={`p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 border ${borderStyles}`}
         title="Next day"

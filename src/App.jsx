@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDailyData } from './hooks/useLocalStorage'
 import { useTimer } from './hooks/useTimer'
 import { TARGETS } from './utils/timeUtils'
@@ -7,24 +7,24 @@ import ProjectCategory from './components/ProjectCategory'
 import TaskCategory from './components/TaskCategory'
 import Footer from './components/Footer'
 import { ThemeProvider } from './contexts/ThemeContext'
+import { DateProvider, useDateContext } from './contexts/DateContext'
 import AppTitle from './components/AppTitle'
 import ActionsContainer from './components/ActionsContainer'
 import DateNavigation from './components/DateNavigation'
 import ActionButtons from './components/ActionButtons'
 
-function App() {
-  const [currentDate, setCurrentDate] = useState(new Date().toISOString().split('T')[0])
+function AppContent() {
+  const { currentDate } = useDateContext()
   const [dailyData, updateDailyData] = useDailyData(currentDate)
   const { isTimerRunning, currentTimer, startTimer, stopTimer } = useTimer()
 
   const { tasks, completedTasks, timeSpent } = dailyData
 
   // Handle date change - stop timer when changing days
-  const handleDateChange = (newDate) => {
+  const handleDateChangeWithTimer = (newDate) => {
     if (isTimerRunning) {
       stopTimer()
     }
-    setCurrentDate(newDate)
   }
 
   // Timer effect - updates time every second
@@ -94,27 +94,16 @@ function App() {
   }
 
   return (
-    <ThemeProvider>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
-        <div className="container mx-auto px-4 pt-8 max-w-4xl h-full flex-1 flex flex-col">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
+      <div className="container mx-auto px-4 pt-8 max-w-4xl h-full flex-1 flex flex-col">
         <AppTitle />
       
-      <ActionsContainer currentDate={currentDate}>
-          <DateNavigation 
-            currentDate={currentDate} 
-            onDateChange={handleDateChange} 
-          />
-          <ActionButtons 
-            currentDate={currentDate}
-            onDateChange={handleDateChange}
-            onClearAll={clearAllTasks}
-          />        
-      </ActionsContainer>
+        <ActionsContainer>
+          <DateNavigation onDateChange={handleDateChangeWithTimer} />
+          <ActionButtons onClearAll={clearAllTasks} />        
+        </ActionsContainer>
 
-        <ProgressIndicator 
-          completionPercentage={getCompletionPercentage()} 
-          currentDate={currentDate}
-        />
+        <ProgressIndicator completionPercentage={getCompletionPercentage()} />
 
         {/* Task Categories */}
         {/* First Row - 3 Hours Project */}
@@ -132,7 +121,6 @@ function App() {
             onStartTimer={startTimer}
             onToggleTask={toggleTask}
             onUpdateTask={updateTask}
-            currentDate={currentDate}
           />
         </div>
 
@@ -147,7 +135,6 @@ function App() {
             color="text-red-600"
             onToggleTask={toggleTask}
             onUpdateTask={updateTask}
-            currentDate={currentDate}
           />
           
           <TaskCategory
@@ -159,13 +146,24 @@ function App() {
             color="text-green-600"
             onToggleTask={toggleTask}
             onUpdateTask={updateTask}
-            currentDate={currentDate}
           />
         </div>
-        </div>
-
-        <Footer />
       </div>
+
+      <Footer />
+    </div>
+  )
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <DateProvider onDateChange={(newDate) => {
+        // This will be called by the context when date changes
+        // Timer stop logic is handled in the context methods
+      }}>
+        <AppContent />
+      </DateProvider>
     </ThemeProvider>
   )
 }
