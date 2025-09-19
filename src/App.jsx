@@ -5,6 +5,7 @@ import { TARGETS } from './utils/timeUtils'
 import Header from './components/Header'
 import ProjectCategory from './components/ProjectCategory'
 import TaskCategory from './components/TaskCategory'
+import Footer from './components/Footer'
 
 function App() {
   const [currentDate, setCurrentDate] = useState(new Date().toISOString().split('T')[0])
@@ -143,10 +144,7 @@ function App() {
           />
         </div>
 
-        {/* Footer */}
-        <div className="text-center mt-8 text-sm text-gray-500">
-          <p>Start with 3 hours on your most important project, then tackle urgent tasks and maintenance activities.</p>
-        </div>
+        <Footer />
       </div>
     </div>
   )
