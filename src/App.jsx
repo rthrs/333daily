@@ -91,8 +91,8 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
+        <div className="container mx-auto px-4 pt-8 max-w-4xl h-full flex-1 flex flex-col">
         {/* Header */}
         <Header
           currentDate={currentDate}
@@ -103,7 +103,7 @@ function App() {
 
         {/* Task Categories */}
         {/* First Row - 3 Hours Project */}
-        <div className="mb-8">
+        <div className="mb-6">
           <ProjectCategory
             title="3 Hours - Most Important Project"
             tasks={tasks.project}
@@ -145,9 +145,9 @@ function App() {
             currentDate={currentDate}
           />
         </div>
+        </div>
 
         <Footer />
-        </div>
       </div>
     </ThemeProvider>
   )

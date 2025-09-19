@@ -21,7 +21,7 @@ const Header = ({
   const isFuture = new Date(currentDate) > new Date(today)
 
   return (
-    <div className="text-center mb-8">
+    <div className="text-center">
       <div className="flex mb-4 flex-col">
         <div className="flex justify-between items-start">
           <div className="flex-1"></div>

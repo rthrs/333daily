@@ -2,9 +2,19 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className="text-center mt-8 text-sm text-gray-500 dark:text-gray-400">
+    <div className="text-center px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
       <p>Start with 3 hours on your most important project, then tackle urgent tasks and maintenance activities.</p>
-      <p>© 2025 Artur Myszkowski</p>
+      
+      <p className="text-xs mt-2">
+        © 2025 <a 
+          href="https://arturmyszkowski.pl/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline hover:no-underline transition-colors duration-200 cursor-pointer"
+        >
+          Artur Myszkowski
+        </a>
+        </p>
     </div>
   )
 }
