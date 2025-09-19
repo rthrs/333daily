@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDailyData } from './hooks/useLocalStorage'
 import { useTimer } from './hooks/useTimer'
-import { TARGETS } from './utils/timeUtils'
+import { MAIN_PROJECT_TARGET_DURATION } from './utils/timeUtils'
 import ProgressIndicator from './components/ProgressIndicator'
 import ProjectCategory from './components/ProjectCategory'
 import TaskCategory from './components/TaskCategory'
@@ -115,7 +115,7 @@ function AppContent() {
             category="project"
             color="text-blue-600"
             timeSpent={timeSpent.project}
-            timeTarget={TARGETS.PROJECT}
+            timeTarget={MAIN_PROJECT_TARGET_DURATION}
             isTimerRunning={isTimerRunning}
             currentTimer={currentTimer}
             onStartTimer={startTimer}

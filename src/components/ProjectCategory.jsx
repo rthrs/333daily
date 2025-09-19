@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDateContext } from '../contexts/DateContext'
-import { formatTime, getTimeProgress, TARGETS } from '../utils/timeUtils'
+import { formatTime, getTimeProgress } from '../utils/timeUtils'
 
 const ProjectCategory = ({ 
   title, 

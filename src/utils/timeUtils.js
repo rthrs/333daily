@@ -9,8 +9,4 @@ export const getTimeProgress = (timeSpent, targetSeconds) => {
   return Math.min((timeSpent / targetSeconds) * 100, 100)
 }
 
-export const TARGETS = {
-  PROJECT: 10800, // 3 hours in seconds
-  URGENT: 3600,   // 1 hour in seconds
-  MAINTENANCE: 1800 // 30 minutes in seconds
-}
+export const MAIN_PROJECT_TARGET_DURATION = 10800 // 3 hours in seconds
