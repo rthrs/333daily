@@ -111,7 +111,10 @@ function App() {
           />        
       </ActionsContainer>
 
-        <ProgressIndicator completionPercentage={getCompletionPercentage()} />
+        <ProgressIndicator 
+          completionPercentage={getCompletionPercentage()} 
+          currentDate={currentDate}
+        />
 
         {/* Task Categories */}
         {/* First Row - 3 Hours Project */}
