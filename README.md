@@ -1,4 +1,4 @@
-# 🎯 333 Daily - Oliver Burkeman's Productivity Method App
+# 333 Daily - Oliver Burkeman's Productivity Method App
 
 A simple React app to help you implement Oliver Burkeman's 333 productivity method - dedicating 3 hours to your most important project, completing 3 urgent tasks, and tackling 3 daily maintenance activities.
 

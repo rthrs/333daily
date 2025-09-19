@@ -6,6 +6,7 @@ import Header from './components/Header'
 import ProjectCategory from './components/ProjectCategory'
 import TaskCategory from './components/TaskCategory'
 import Footer from './components/Footer'
+import { ThemeProvider } from './contexts/ThemeContext'
 
 function App() {
   const [currentDate, setCurrentDate] = useState(new Date().toISOString().split('T')[0])
@@ -89,8 +90,9 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <ThemeProvider>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
         <Header
           currentDate={currentDate}
@@ -145,8 +147,9 @@ function App() {
         </div>
 
         <Footer />
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   )
 }
 
