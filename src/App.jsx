@@ -125,6 +125,7 @@ function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <TaskCategory
             title="3 Urgent Tasks"
+            placeholderPrefix="Urgent Task"
             tasks={tasks.urgent}
             completedTasks={completedTasks.urgent}
             category="urgent"
@@ -136,6 +137,7 @@ function App() {
           
           <TaskCategory
             title="3 Maintenance Activities"
+            placeholderPrefix="Maintenance Task"
             tasks={tasks.maintenance}
             completedTasks={completedTasks.maintenance}
             category="maintenance"
