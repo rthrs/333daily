@@ -2,8 +2,8 @@
 
 [![Live Demo](https://img.shields.io/badge/🌐%20Live%20Demo-333daily.netlify.app-blue?style=for-the-badge&logo=netlify)](https://333daily.netlify.app/)
 [![Status](https://img.shields.io/badge/Status-Online-green?style=for-the-badge)](https://333daily.netlify.app/)
-[![React](https://img.shields.io/badge/React-18-61dafb?style=for-the-badge&logo=react)](https://reactjs.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.0-38bdf8?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![React](https://img.shields.io/badge/React-19.1-61dafb?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.1-38bdf8?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 
 A modern, responsive React app to help you implement Oliver Burkeman's 333 productivity method - dedicating 3 hours to your most important project, completing 3 urgent tasks, and tackling 3 daily maintenance activities.
 
@@ -63,10 +63,10 @@ This method ensures you make meaningful progress on important work while staying
 
 ## 🛠️ Tech Stack
 
-- **⚛️ React 18** - Modern React with hooks and context
-- **⚡ Vite** - Fast build tool and development server
-- **🎨 Tailwind CSS** - Utility-first CSS framework
-- **🌙 Dark Mode** - CSS class-based theme switching
+- **⚛️ React 19** - Latest React with hooks and context
+- **⚡ Vite 6** - Fast build tool and development server
+- **🎨 Tailwind CSS 4** - Latest utility-first CSS framework with CSS-first configuration
+- **🌙 Dark Mode** - CSS class-based theme switching with proper v4.1 support
 - **📱 PWA** - Progressive Web App capabilities
 - **💾 Local Storage** - Client-side data persistence
 - **📅 Date-fns** - Date manipulation utilities

@@ -20,7 +20,7 @@ const ProjectCategory = ({
   const progress = getTimeProgress(timeSpent, timeTarget)
 
   return (
-    <div className="card dark:bg-gray-800 dark:border-gray-700">
+    <div className="card card-dark">
       <div className="flex items-center justify-between mb-4">
         <h3 className={`text-lg font-semibold ${color} dark:text-blue-400`}>{title}</h3>
         <div className="text-sm text-gray-600 dark:text-gray-300">
@@ -42,10 +42,10 @@ const ProjectCategory = ({
       <div className="mb-4">
         <button
           onClick={() => onStartTimer(category)}
-          className={`w-full py-3 px-4 rounded-lg font-medium transition-colors duration-200 ${
+          className={`btn-timer ${
             isTimerRunning && currentTimer === category
-              ? 'bg-red-500 hover:bg-red-600 text-white'
-              : 'bg-primary-100 dark:bg-primary-900 hover:bg-primary-200 dark:hover:bg-primary-800 text-primary-700 dark:text-primary-300'
+              ? 'btn-timer-active'
+              : 'btn-timer-inactive'
           }`}
         >
           {isTimerRunning && currentTimer === category ? 'Stop Timer' : 'Start Timer'}
@@ -58,7 +58,7 @@ const ProjectCategory = ({
             type="checkbox"
             checked={completedTasks}
             onChange={() => onToggleTask(category)}
-            className="w-5 h-5 text-primary-600 dark:text-primary-400 rounded focus:ring-primary-500 dark:focus:ring-primary-400"
+            className="checkbox"
           />
           <input
             key={`project-${currentDate}`}
@@ -66,7 +66,7 @@ const ProjectCategory = ({
             value={tasks}
             onChange={(e) => onUpdateTask(category, null, e.target.value)}
             placeholder="Your most important project..."
-            className={`input-field flex-1 dark:bg-gray-700 dark:text-white dark:border-gray-600 ${completedTasks ? 'line-through text-gray-500 dark:text-gray-400' : ''}`}
+            className={`input-field input-field-dark flex-1 ${completedTasks ? 'line-through text-gray-500 dark:text-gray-400' : ''}`}
           />
         </div>
       </div>

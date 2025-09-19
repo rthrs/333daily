@@ -12,7 +12,7 @@ const ActionButtons = ({ onClearAll }) => {
     <div className="flex items-center justify-center gap-2">
       <button
         onClick={goToToday}
-        className={`px-3 py-2 text-sm font-medium bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg transition-colors duration-200 border ${borderStyles}`}
+        className={`btn-ghost text-sm ${borderStyles}`}
         title="Go to today"
       >
         ✨ Go To Today
@@ -20,7 +20,7 @@ const ActionButtons = ({ onClearAll }) => {
 
       <button
         onClick={onClearAll}
-        className={`px-3 py-2 text-sm font-medium bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg transition-colors duration-200 border ${borderStyles}`}
+        className={`btn-ghost text-sm ${borderStyles}`}
       >
         🗑️ Clear All Tasks
       </button>

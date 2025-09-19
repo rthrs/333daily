@@ -10,7 +10,7 @@ const Footer = () => {
           href="https://arturmyszkowski.pl/" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline hover:no-underline transition-colors duration-200 cursor-pointer"
+          className="link"
         >
           Artur Myszkowski
         </a>

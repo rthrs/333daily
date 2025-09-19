@@ -14,7 +14,7 @@ const TaskCategory = ({
   const { currentDate } = useDateContext()
   
   return (
-    <div className="card dark:bg-gray-800 dark:border-gray-700">
+    <div className="card card-dark">
       <h3 className={`text-lg font-semibold mb-4 ${color} ${
         color === 'text-red-600' 
           ? 'dark:text-red-400' 
@@ -29,7 +29,7 @@ const TaskCategory = ({
               type="checkbox"
               checked={completedTasks[index]}
               onChange={() => onToggleTask(category, index)}
-              className="w-5 h-5 text-primary-600 dark:text-primary-400 rounded focus:ring-primary-500 dark:focus:ring-primary-400"
+              className="checkbox"
             />
             <input
               key={`${category}-input-${index}-${currentDate}`}
@@ -37,7 +37,7 @@ const TaskCategory = ({
               value={task}
               onChange={(e) => onUpdateTask(category, index, e.target.value)}
               placeholder={`${placeholderPrefix} ${index + 1}...`}
-              className={`input-field flex-1 dark:bg-gray-700 dark:text-white dark:border-gray-600 ${completedTasks[index] ? 'line-through text-gray-500 dark:text-gray-400' : ''}`}
+              className={`input-field input-field-dark flex-1 ${completedTasks[index] ? 'line-through text-gray-500 dark:text-gray-400' : ''}`}
             />
           </div>
         ))}
