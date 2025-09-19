@@ -107,7 +107,7 @@ const Header = ({
             id="date"
             value={currentDate}
             onChange={(e) => onDateChange(e.target.value)}
-            className={`input-field w-auto dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:placeholder-gray-400 cursor-pointer ${
+            className={`input-field w-auto dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:placeholder-gray-400 pl-4 ${
               isToday 
                 ? 'border-green-300 dark:border-green-600 focus:border-green-500 dark:focus:border-green-400 focus:ring-green-500 dark:focus:ring-green-400'
                 : isYesterday
@@ -147,12 +147,19 @@ const Header = ({
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
+        </div>
+      </div>
 
-          {/* Today button - always present to prevent layout shift */}
-          <div className="h-8 flex items-center justify-center">
+
+    
+
+      {/* Clear button - always present to prevent layout shift */}
+      <div className="h-8 flex items-center justify-center mb-6 gap-4">
+         {/* Today button - always present to prevent layout shift */}
+         <div className="h-8 flex items-center justify-center">
               <button
                 onClick={() => onDateChange(today)}
-                className={`px-3 py-2 text-sm font-medium bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg transition-colors duration-200 border ${
+                className={`px-3 py-2 text-sm font-medium bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg transition-colors duration-200 border ${
                   isToday 
                     ? 'border-green-300 dark:border-green-600'
                     : isYesterday
@@ -165,25 +172,30 @@ const Header = ({
                 }`}
                 title="Go to today"
               >
-                ✨ Go to today
+                ✨ Go To Today
               </button>
           </div>
-        </div>
-      </div>
 
+            <button
+              onClick={onClearAll}
+              className={`px-3 py-2 text-sm font-medium bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg transition-colors duration-200 border ${
+                isToday 
+                  ? 'border-green-300 dark:border-green-600'
+                  : isYesterday
+                    ? 'border-orange-300 dark:border-orange-600'
+                  : isTomorrow
+                    ? 'border-blue-300 dark:border-blue-600'
+                  : isPast 
+                    ? 'border-yellow-300 dark:border-yellow-600' 
+                    : 'border-purple-300 dark:border-purple-600'
+              }`}
+            >
+              🗑️ Clear All Tasks
+            </button>
+      </div>
 
       {/* Progress indicator */}
       <ProgressIndicator completionPercentage={completionPercentage} />
-
-      {/* Clear button - always present to prevent layout shift */}
-      <div className="h-8 flex items-center justify-center">
-          <button
-            onClick={onClearAll}
-            className="btn-secondary text-sm"
-          >
-            Clear All Tasks
-          </button>
-      </div>
     </div>
   )
 }
