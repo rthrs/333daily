@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { useDailyData } from './hooks/useLocalStorage'
 import { useTimer } from './hooks/useTimer'
 import { TARGETS } from './utils/timeUtils'
-import Header from './components/Header'
+import ProgressIndicator from './components/ProgressIndicator'
 import ProjectCategory from './components/ProjectCategory'
 import TaskCategory from './components/TaskCategory'
 import Footer from './components/Footer'
 import { ThemeProvider } from './contexts/ThemeContext'
+import AppTitle from './components/AppTitle'
+import ActionsContainer from './components/ActionsContainer'
+import DateNavigation from './components/DateNavigation'
+import ActionButtons from './components/ActionButtons'
 
 function App() {
   const [currentDate, setCurrentDate] = useState(new Date().toISOString().split('T')[0])
@@ -93,13 +97,21 @@ function App() {
     <ThemeProvider>
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
         <div className="container mx-auto px-4 pt-8 max-w-4xl h-full flex-1 flex flex-col">
-        {/* Header */}
-        <Header
-          currentDate={currentDate}
-          onDateChange={handleDateChange}
-          completionPercentage={getCompletionPercentage()}
-          onClearAll={clearAllTasks}
-        />
+        <AppTitle />
+      
+      <ActionsContainer currentDate={currentDate}>
+          <DateNavigation 
+            currentDate={currentDate} 
+            onDateChange={handleDateChange} 
+          />
+          <ActionButtons 
+            currentDate={currentDate}
+            onDateChange={handleDateChange}
+            onClearAll={clearAllTasks}
+          />        
+      </ActionsContainer>
+
+        <ProgressIndicator completionPercentage={getCompletionPercentage()} />
 
         {/* Task Categories */}
         {/* First Row - 3 Hours Project */}
