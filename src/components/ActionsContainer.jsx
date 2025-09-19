@@ -9,13 +9,15 @@ const ActionsContainer = ({ currentDate, children }) => {
   const isYesterday = currentDate === yesterday
   const isTomorrow = currentDate === tomorrow
   const isPast = new Date(currentDate) < new Date(today)
-  const isFuture = new Date(currentDate) > new Date(today)
 
   const getDayLabel = () => {
-    if (isToday) return '✨ Today'
-    if (isYesterday) return '📅 Yesterday'
-    if (isTomorrow) return '🔮 Tomorrow'
+    if (isYesterday) return '⌛ Yesterday'
     if (isPast) return '📅 Past'
+    
+    if (isTomorrow) return ' 🚀 Tomorrow'
+    if (isToday) return '🎯 Today'
+    
+    
     return '🔮 Future'
   }
 
