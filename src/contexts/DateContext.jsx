@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
-import { getToday } from '../utils/dateUtils';
+import { createContext, useContext, useState, useMemo } from 'react';
+import { getToday, getDayKind } from '../utils/dateUtils';
 
 const DateContext = createContext();
 
@@ -41,6 +41,11 @@ export const DateProvider = ({ children, onDateChange }) => {
         return newDate;
     };
 
+    const currentDateKind = useMemo(
+        () => getDayKind(currentDate),
+        [currentDate]
+    );
+
     const value = {
         currentDate,
         setCurrentDate,
@@ -48,6 +53,7 @@ export const DateProvider = ({ children, onDateChange }) => {
         goToToday,
         goToPreviousDay,
         goToNextDay,
+        currentDateKind,
     };
 
     return (

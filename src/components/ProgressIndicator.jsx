@@ -1,19 +1,18 @@
 import React from 'react';
 import { useDateContext } from '../contexts/DateContext';
-import { getDateFlags, getDayText } from '../utils/dateUtils';
-import { getDayStyles } from '../utils/styleUtils';
+import { getDayText } from '../utils/dateUtils';
+import { useCurrentDateStyles } from '../hooks/useCurrentDateStyles';
 import ProgressBar from './ProgressBar';
 
 const ProgressIndicator = ({ completionPercentage }) => {
     const { currentDate } = useDateContext();
-    const dateFlags = getDateFlags(currentDate);
-    const dayStyles = getDayStyles(dateFlags);
+    const { styles } = useCurrentDateStyles();
 
     return (
         <div className="card p-4">
             <div className="flex mb-2 flex-col md:flex-row justify-between">
                 <h3
-                    className={`text-lg first-letter:uppercase font-semibold ${dayStyles.text} mb-3 md:mb-0`}
+                    className={`text-lg first-letter:uppercase font-semibold ${styles.text} mb-3 md:mb-0`}
                 >
                     {getDayText(currentDate)}
                 </h3>
@@ -24,14 +23,14 @@ const ProgressIndicator = ({ completionPercentage }) => {
                     >
                         Progress: &nbsp;
                     </span>
-                    <span className={`${dayStyles.text} font-bold`}>
+                    <span className={`${styles.text} font-bold`}>
                         {completionPercentage}%
                     </span>
                 </div>
             </div>
             <ProgressBar
                 progress={completionPercentage}
-                progressColor={dayStyles.progressColor}
+                progressColor={styles.progressColor}
             />
         </div>
     );

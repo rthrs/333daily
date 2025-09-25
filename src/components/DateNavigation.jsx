@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useDateContext } from '../contexts/DateContext';
-import { getDateFlags, formatDateShort, getDayName } from '../utils/dateUtils';
-import { getDayStyles } from '../utils/styleUtils';
+import { formatDate as formatDate, getDayName } from '../utils/dateUtils';
+import { useCurrentDateStyles } from '../hooks/useCurrentDateStyles';
 
 const DateNavigation = ({ onDateChange, onClearAll }) => {
     const { isDark } = useTheme();
@@ -16,8 +16,7 @@ const DateNavigation = ({ onDateChange, onClearAll }) => {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const dateInputRef = useRef(null);
 
-    const dateFlags = getDateFlags(currentDate);
-    const dayStyles = getDayStyles(dateFlags);
+    const { styles } = useCurrentDateStyles();
 
     const handleDateInputChange = newDate => {
         handleDateChange(newDate);
@@ -54,14 +53,14 @@ const DateNavigation = ({ onDateChange, onClearAll }) => {
     return (
         <div className={`card p-0 dark:text-gray-100`}>
             <div
-                className={`card space-y-4 px-4 border-y-0 border-x-24 ${dayStyles.background} ${dayStyles.border}`}
+                className={`card space-y-4 px-4 border-y-0 border-x-24 ${styles.background} ${styles.border}`}
             >
                 <div className="text-center">
                     <h2
                         className={`text-3xl font-bold hover:opacity-80 transition-opacity cursor-pointer`}
                         onClick={handleCalendarClick}
                     >
-                        {formatDateShort(currentDate)}
+                        {formatDate(currentDate)}
                     </h2>
                     <p className={`text-lg font-light mt-1`}>
                         {getDayName(currentDate)}

@@ -3,10 +3,8 @@ import BaseItem from './BaseItem';
 import {
     getDayCategoryBackground,
     getDayCategoryBorder,
-} from '../constants/categories';
-import { useDateContext } from '../contexts/DateContext';
-import { getDateFlags } from '../utils/dateUtils';
-import { getDayStyles } from '../utils/styleUtils';
+} from '../utils/styleUtils';
+import { useCurrentDateStyles } from '../hooks/useCurrentDateStyles';
 
 const ProjectItem = ({
     task,
@@ -16,13 +14,11 @@ const ProjectItem = ({
     placeholder,
     category = 'project',
 }) => {
-    const { currentDate } = useDateContext();
-    const dateFlags = getDateFlags(currentDate);
-    const dayStyles = getDayStyles(dateFlags);
+    const { baseColor } = useCurrentDateStyles();
 
     return (
         <div
-            className={`flex px-3 py-1 rounded-lg border ${getDayCategoryBorder(dayStyles)} ${getDayCategoryBackground(dayStyles)}`}
+            className={`flex px-3 py-1 rounded-lg border ${getDayCategoryBorder(baseColor)} ${getDayCategoryBackground(baseColor)}`}
         >
             <BaseItem
                 task={task}

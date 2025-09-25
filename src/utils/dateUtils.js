@@ -10,21 +10,21 @@ export const getToday = () => {
 };
 
 /**
- * Get date comparison flags for a given date
+ * Get day kind from date string
  * @param {string} dateString - Date in YYYY-MM-DD format
- * @returns {object} Object with isToday, isYesterday, isTomorrow, isPast, isFuture flags
+ * @returns {string} Day kind ('today', 'yesterday', 'tomorrow', 'past', 'future')
  */
-export const getDateFlags = dateString => {
+export const getDayKind = dateString => {
     const today = getToday();
     const daysDelta = getDaysDifference(today, dateString);
 
-    return {
-        isToday: daysDelta === 0,
-        isYesterday: daysDelta === -1,
-        isTomorrow: daysDelta === 1,
-        isPast: daysDelta < 0,
-        isFuture: daysDelta > 0,
-    };
+    if (daysDelta === 0) return 'today';
+    if (daysDelta === -1) return 'yesterday';
+    if (daysDelta === 1) return 'tomorrow';
+    if (daysDelta < 0) return 'past';
+
+    // daysDelta > 0
+    return 'future';
 };
 
 /**
@@ -32,7 +32,7 @@ export const getDateFlags = dateString => {
  * @param {string} dateString - Date in YYYY-MM-DD format
  * @returns {string} Formatted date string in "Day Month Year" format
  */
-export const formatDateShort = dateString => {
+export const formatDate = dateString => {
     const date = new Date(dateString);
 
     const month = date.toLocaleDateString('en-US', { month: 'long' });
@@ -68,7 +68,6 @@ export const getDaysDifference = (date1, date2) => {
 
 /**
  * Get day text using Intl.RelativeTimeFormat with natural language
- * @param {object} dateFlags - Date flags object from getDateFlags
  * @param {string} dateString - Current date in YYYY-MM-DD format
  * @returns {string} Day text with natural language formatting
  */

@@ -1,11 +1,9 @@
 import React from 'react';
-import { useDateContext } from '../contexts/DateContext';
 import { formatTime, getTimeProgress } from '../utils/timeUtils';
 import ProjectItem from './ProjectItem';
 import ProgressBar from './ProgressBar';
-import { getDayCategoryColor } from '../constants/categories';
-import { getDateFlags } from '../utils/dateUtils';
-import { getDayStyles } from '../utils/styleUtils';
+import { getDayCategoryColor } from '../utils/styleUtils';
+import { useCurrentDateStyles } from '../hooks/useCurrentDateStyles';
 
 const ProjectCategory = ({
     title,
@@ -20,16 +18,14 @@ const ProjectCategory = ({
     onToggleTask,
     onUpdateTask,
 }) => {
-    const { currentDate } = useDateContext();
+    const { baseColor, styles } = useCurrentDateStyles();
     const progress = getTimeProgress(timeSpent, timeTarget);
-    const dateFlags = getDateFlags(currentDate);
-    const dayStyles = getDayStyles(dateFlags);
 
     return (
         <div className="card card-dark mb-6">
             <div className="flex justify-between mb-4 flex-col md:flex-row">
                 <h3
-                    className={`text-lg font-semibold ${getDayCategoryColor(dayStyles)} mb-3 md:mb-0`}
+                    className={`text-lg font-semibold ${getDayCategoryColor(baseColor)} mb-3 md:mb-0`}
                 >
                     {title}
                 </h3>
@@ -73,7 +69,7 @@ const ProjectCategory = ({
             <div className="mb-4">
                 <ProgressBar
                     progress={progress}
-                    progressColor={dayStyles.progressColor}
+                    progressColor={styles.progressColor}
                 />
             </div>
 
