@@ -92,10 +92,10 @@ function HomePage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
-      <div className="container mx-auto px-4 pt-8 max-w-4xl h-full flex-1 flex flex-col">
+      <div className="container mx-auto px-4 max-w-4xl h-full flex-1 flex flex-col">
         <AppTitle />
 
-        <div className="flex flex-col space-y-6">
+        <div className="flex flex-col space-y-5">
       
         <DateNavigation onDateChange={handleDateChangeWithTimer} onClearAll={clearAllTasks} />
 
@@ -115,7 +115,7 @@ function HomePage() {
             onUpdateTask={updateTask}
           />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <TaskCategory
             title="3 Urgent Tasks"
             placeholderPrefix="Urgent Task"

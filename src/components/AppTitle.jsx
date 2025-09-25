@@ -3,7 +3,7 @@ import ThemeSwitcher from './ThemeSwitcher'
 
 const AppTitle = () => {
   return (
-    <div className="flex mb-4 flex-col">
+    <div className="flex mb-4 flex-col pt-6">
       <div className="flex justify-between items-start">
         <div className="flex-1"></div>
         <h1 className="flex-1 text-center text-4xl font-bold text-gray-900 dark:text-white mb-2 whitespace-nowrap">333 Daily</h1>  

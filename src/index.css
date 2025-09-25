@@ -54,7 +54,7 @@
   
   /* Layout Components */
   .card {
-    @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6 dark:bg-gray-800 dark:border-gray-700;
+    @apply bg-white rounded-xl shadow-sm border border-gray-200 p-5 dark:bg-gray-800 dark:border-gray-700;
   }
   
   /* Drag and drop styles - entire item is draggable */
