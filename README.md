@@ -16,13 +16,14 @@ The app is fully functional and ready to use. No installation required - just op
 ## ✨ Features
 
 - **⏰ 3 Hours - Most Important Project**: Dedicate focused time to your primary work with built-in timer
-- **🚨 3 Urgent Tasks**: Handle pressing matters that need immediate attention
-- **🔧 3 Maintenance Activities**: Daily upkeep tasks and routines
+- **🚨 3 Urgent Tasks**: Handle pressing matters that need immediate attention (drag & drop to reorder)
+- **🔧 3 Maintenance Activities**: Daily upkeep tasks and routines (drag & drop to reorder)
 - **⏱️ Smart Timer**: Built-in timer for the main project with automatic progress tracking
 - **📊 Visual Progress**: Real-time progress bars showing time spent vs. 3-hour target
 - **📅 Date Navigation**: Switch between different days with intuitive date picker
 - **🎯 Day Indicators**: Color-coded labels (Today/Yesterday/Tomorrow/Past/Future)
 - **💾 Persistent Storage**: All data automatically saved to local storage per day
+- **🔄 Drag & Drop Reordering**: Smooth reordering using Framer Motion with visual feedback
 - **🌙 Dark Mode**: Toggle between light and dark themes
 - **📱 Responsive Design**: Optimized for desktop, tablet, and mobile devices
 - **🎨 Modern UI**: Clean, intuitive interface built with Tailwind CSS

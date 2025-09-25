@@ -55,6 +55,10 @@ const initialDailyData = {
   timeSpent: {
     project: 0
   },
+  taskOrder: {
+    urgent: [0, 1, 2],
+    maintenance: [0, 1, 2]
+  },
   lastUpdated: new Date().toISOString()
 }
 
@@ -77,5 +81,16 @@ export const useDailyData = (currentDate) => {
     } 
   }
 
-  return [dailyData, updateCurrentDayData]
+  const reorderTasks = (category, newOrder) => {
+    setDailyData(prev => ({
+      ...prev,
+      taskOrder: {
+        ...prev.taskOrder,
+        [category]: newOrder
+      },
+      lastUpdated: new Date().toISOString()
+    }))
+  }
+
+  return [dailyData, updateCurrentDayData, reorderTasks]
 }

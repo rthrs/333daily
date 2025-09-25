@@ -15,10 +15,10 @@ import ActionButtons from './components/ActionButtons'
 
 function AppContent() {
   const { currentDate } = useDateContext()
-  const [dailyData, updateDailyData] = useDailyData(currentDate)
+  const [dailyData, updateDailyData, reorderTasks] = useDailyData(currentDate)
   const { isTimerRunning, currentTimer, startTimer, stopTimer } = useTimer()
 
-  const { tasks, completedTasks, timeSpent } = dailyData
+  const { tasks, completedTasks, timeSpent, taskOrder = { urgent: [0, 1, 2], maintenance: [0, 1, 2] } } = dailyData
 
   // Handle date change - stop timer when changing days
   const handleDateChangeWithTimer = (newDate) => {
@@ -135,6 +135,8 @@ function AppContent() {
             color="text-red-600"
             onToggleTask={toggleTask}
             onUpdateTask={updateTask}
+            onReorderTasks={reorderTasks}
+            taskOrder={taskOrder.urgent}
           />
           
           <TaskCategory
@@ -146,6 +148,8 @@ function AppContent() {
             color="text-green-600"
             onToggleTask={toggleTask}
             onUpdateTask={updateTask}
+            onReorderTasks={reorderTasks}
+            taskOrder={taskOrder.maintenance}
           />
         </div>
       </div>

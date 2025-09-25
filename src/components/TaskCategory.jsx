@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Reorder } from 'motion/react'
 import { useDateContext } from '../contexts/DateContext'
+import TaskItem from './TaskItem'
 
 const TaskCategory = ({ 
   title, 
@@ -9,10 +11,34 @@ const TaskCategory = ({
   category, 
   color,
   onToggleTask,
-  onUpdateTask
+  onUpdateTask,
+  onReorderTasks,
+  taskOrder
 }) => {
   const { currentDate } = useDateContext()
+  const [isDragging, setIsDragging] = useState(false)
   
+  // Get ordered tasks based on taskOrder
+  const orderedTasks = taskOrder.map(orderIndex => ({
+    task: tasks[orderIndex],
+    completed: completedTasks[orderIndex],
+    originalIndex: orderIndex
+  }))
+
+  const handleReorder = (newOrder) => {
+    // newOrder contains the original indices in their new order
+    // Convert to the new taskOrder array
+    onReorderTasks(category, newOrder)
+  }
+
+  const handleDragStart = () => {
+    setIsDragging(true)
+  }
+
+  const handleDragEnd = () => {
+    setIsDragging(false)
+  }
+
   return (
     <div className="card card-dark">
       <h3 className={`text-lg font-semibold mb-4 ${color} ${
@@ -22,26 +48,33 @@ const TaskCategory = ({
             ? 'dark:text-green-400' 
             : 'dark:text-gray-200'
       }`}>{title}</h3>
-      <div className="space-y-3">
-        {tasks.map((task, index) => (
-          <div key={`${category}-${index}-${currentDate}`} className="flex items-center space-x-3">
-            <input
-              type="checkbox"
-              checked={completedTasks[index]}
-              onChange={() => onToggleTask(category, index)}
-              className="checkbox"
-            />
-            <input
-              key={`${category}-input-${index}-${currentDate}`}
-              type="text"
-              value={task}
-              onChange={(e) => onUpdateTask(category, index, e.target.value)}
-              placeholder={`${placeholderPrefix} ${index + 1}...`}
-              className={`input-field input-field-dark flex-1 ${completedTasks[index] ? 'line-through text-gray-500 dark:text-gray-400' : ''}`}
-            />
-          </div>
+      
+      <Reorder.Group
+        axis="y"
+        values={orderedTasks.map(task => task.originalIndex)}
+        onReorder={handleReorder}
+        className={`space-y-1 transition-all duration-150 ${
+          isDragging 
+            ? 'bg-blue-50 dark:bg-blue-900 border-2 border-dashed border-blue-300 dark:border-blue-600 rounded-lg p-2' 
+            : ''
+        }`}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        transition={{ duration: 0.15, ease: "easeOut" }}
+      >
+        {orderedTasks.map(({ task, completed, originalIndex }) => (
+          <TaskItem
+            key={`${category}-${originalIndex}`}
+            task={task}
+            completed={completed}
+            index={originalIndex}
+            onToggle={() => onToggleTask(category, originalIndex)}
+            onUpdate={(value) => onUpdateTask(category, originalIndex, value)}
+            placeholderPrefix={placeholderPrefix}
+            category={category}
+          />
         ))}
-      </div>
+      </Reorder.Group>
     </div>
   )
 }
