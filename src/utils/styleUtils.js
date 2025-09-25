@@ -26,9 +26,9 @@ export const getDayStyles = (dateFlags) => {
   }
   if (isTomorrow) {
     return {
-      background: 'bg-blue-100 dark:bg-blue-950 dark:border-blue-700',
-      text: 'text-blue-600 dark:text-blue-400',
-      progressColor: 'bg-blue-500 dark:bg-blue-600'
+      background: 'bg-sky-100 dark:bg-sky-950 dark:border-sky-700',
+      text: 'text-sky-600 dark:text-sky-400',
+      progressColor: 'bg-sky-500 dark:bg-sky-600'
     }
   }
   if (isPast) {
