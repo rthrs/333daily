@@ -12,28 +12,32 @@ export const getDayStyles = (dateFlags) => {
   
   if (isToday) {
     return {
-      background: 'teal-100 dark:bg-teal-950 dark:border-teal-700',
+      border: 'border-teal-300 dark:border-teal-700',
+      background: 'bg-teal-100 dark:bg-teal-950',
       text: 'text-teal-600 dark:text-teal-400',
       progressColor: 'bg-teal-500 dark:bg-teal-700'
     }
   }
   if (isYesterday) {
     return {
-      background: 'bg-orange-100 dark:bg-orange-950 dark:border-orange-700',
+      border: 'border-orange-300 dark:border-orange-700',
+      background: 'bg-orange-100 dark:bg-orange-950',
       text: 'text-orange-600 dark:text-orange-400',
       progressColor: 'bg-orange-500 dark:bg-orange-600'
     }
   }
   if (isTomorrow) {
     return {
-      background: 'bg-sky-100 dark:bg-sky-950 dark:border-sky-700',
+      border: 'border-sky-300 dark:border-sky-700',
+      background: 'bg-sky-100 dark:bg-sky-950',
       text: 'text-sky-600 dark:text-sky-400',
       progressColor: 'bg-sky-500 dark:bg-sky-600'
     }
   }
   if (isPast) {
     return {
-      background: 'bg-red-100 dark:bg-red-950 dark:border-red-700',
+      border: 'border-red-300 dark:border-red-700',
+      background: 'bg-red-100 dark:bg-red-950',
       text: 'text-red-600 dark:text-red-400',
       progressColor: 'bg-red-500 dark:bg-red-600'
     }
@@ -41,7 +45,8 @@ export const getDayStyles = (dateFlags) => {
 
   // isFuture
   return {
-    background: 'bg-purple-100 dark:bg-purple-950 dark:border-purple-700',
+    border: 'border-purple-300 dark:border-purple-700',
+    background: 'bg-purple-100 dark:bg-purple-950',
     text: 'text-purple-600 dark:text-purple-400',
     progressColor: 'bg-purple-500 dark:bg-purple-600'
   }
@@ -64,12 +69,12 @@ export const getBorderStyles = (dateFlags) => {
 export const getInputStyles = (dateFlags) => {
   const { isToday, isYesterday, isTomorrow, isPast } = dateFlags
   
-  if (isToday) return 'border-blue-300 dark:border-blue-600 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-blue-500 dark:focus:ring-blue-400'
-  if (isYesterday) return 'border-yellow-300 dark:border-yellow-600 focus:border-yellow-500 dark:focus:border-yellow-400 focus:ring-yellow-500 dark:focus:ring-yellow-400'
-  if (isTomorrow) return 'border-indigo-300 dark:border-indigo-600 focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-indigo-500 dark:focus:ring-indigo-400'
-  if (isPast) return 'border-zinc-300 dark:border-zinc-600 focus:border-zinc-500 dark:focus:border-zinc-400 focus:ring-zinc-500 dark:focus:ring-zinc-400'
+  if (isToday) return 'border-teal-300 dark:border-teal-700 focus:border-teal-500 dark:focus:border-teal-400 focus:ring-teal-500 dark:focus:ring-teal-400'
+  if (isYesterday) return 'border-orange-300 dark:border-orange-700 focus:border-orange-500 dark:focus:border-orange-400 focus:ring-orange-500 dark:focus:ring-orange-400'
+  if (isTomorrow) return 'border-sky-300 dark:border-sky-700 focus:border-sky-500 dark:focus:border-sky-400 focus:ring-sky-500 dark:focus:ring-sky-400'
+  if (isPast) return 'border-red-300 dark:border-red-700 focus:border-red-500 dark:focus:border-red-400 focus:ring-red-500 dark:focus:ring-red-400'
   
-  return 'border-violet-300 dark:border-violet-600 focus:border-violet-500 dark:focus:border-violet-400 focus:ring-violet-500 dark:focus:ring-violet-400'
+  return 'border-purple-300 dark:border-purple-700 focus:border-purple-500 dark:focus:border-purple-400 focus:ring-purple-500 dark:focus:ring-purple-400'
 }
 
 /**

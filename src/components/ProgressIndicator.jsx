@@ -2,6 +2,7 @@ import React from 'react'
 import { useDateContext } from '../contexts/DateContext'
 import { getDateFlags, getDayText, getDayEmoji } from '../utils/dateUtils'
 import { getDayStyles } from '../utils/styleUtils'
+import ProgressBar from './ProgressBar'
 
 const ProgressIndicator = ({ completionPercentage }) => {
   const { currentDate } = useDateContext()
@@ -10,24 +11,19 @@ const ProgressIndicator = ({ completionPercentage }) => {
 
   return (
     <div className="card p-4">
-      <div className="flex mb-2 flex-col md:flex-row justify-between">
-        <div className={`text-md font-medium ${dayStyles.text}`}>{getDayText(dateFlags)}</div>
-        
-        <div className="ml text-sm font-medium">
-          <span className={`text-gray-600 dark:text-gray-300`}>Progress: &nbsp;</span>
-          <span className={`${dayStyles.text}`}>{completionPercentage}%</span>
-        </div>
+      <div className="flex mb-2 flex-col md:flex-row justify-between">      
+        <h3 className={`text-lg font-semibold ${dayStyles.text} mb-3 md:mb-0`}>{getDayText(dateFlags)}</h3>
   
-        
+        <div className="ml text-sm font-medium">
+          <span className={`text-gray-600 font-light dark:text-gray-300`}>Progress: &nbsp;</span>
+          <span className={`${dayStyles.text} font-bold`}>{completionPercentage}%</span>
+        </div>
       </div>
-      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-        <div 
-          className={`h-2 rounded-full transition-all duration-300 ${dayStyles.progressColor}`}
-          style={{ 
-            width: `${completionPercentage}%`
-          }}
-        ></div>
-      </div>
+      <ProgressBar 
+        progress={completionPercentage} 
+        progressColor={dayStyles.progressColor}
+        height="h-2"
+      />
     </div>
   )
 }

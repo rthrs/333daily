@@ -46,10 +46,8 @@ const DateNavigation = ({ onDateChange, onClearAll }) => {
   )
 
   return (
-    <div className={`card p-0`}>
-      
-      
-      <div className={`card space-y-4 px-4 border-y-0 border-x-24 ${dayStyles.background}`}>
+    <div className={`card p-0 dark:text-gray-100`}>
+      <div className={`card space-y-4 px-4 border-y-0 border-x-24 ${dayStyles.background} ${dayStyles.border}`}>
           <div className="text-center">
             <h2 className={`text-3xl font-bold hover:opacity-80 transition-opacity cursor-pointer`} onClick={handleCalendarClick}>
               {formatDateShort(currentDate)}

@@ -2,6 +2,7 @@ import React from 'react'
 import { useDateContext } from '../contexts/DateContext'
 import { formatTime, getTimeProgress } from '../utils/timeUtils'
 import ProjectItem from './ProjectItem'
+import ProgressBar from './ProgressBar'
 import { getDayCategoryColor } from '../constants/categories'
 import { getDateFlags } from '../utils/dateUtils'
 import { getDayStyles } from '../utils/styleUtils'
@@ -55,12 +56,10 @@ const ProjectCategory = ({
       
       {/* Time progress bar */}
       <div className="mb-4">
-        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-          <div 
-            className={`h-3 rounded-full transition-all duration-300 ${dayStyles.progressColor}`}
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
+        <ProgressBar 
+          progress={progress} 
+          progressColor={dayStyles.progressColor}
+        />
       </div>
 
 

@@ -23,7 +23,7 @@ const TaskItem = ({
   return (
     <Reorder.Item
       value={index}
-      className={`flex px-3 py-1 rounded-lg border ${getDayCategoryBorder(dayStyles)} ${getDayCategoryBackground(dayStyles)} ${isDragging ? 'reorder-item-dragging' : 'cursor-grab'}`}
+      className={`flex px-3 rounded-lg border ${getDayCategoryBorder(dayStyles)} ${getDayCategoryBackground(dayStyles)} ${isDragging ? 'reorder-item-dragging' : 'cursor-grab'}`}
       style={{ 
         position: 'relative',
         cursor: isDragging ? 'grabbing' : 'grab',
