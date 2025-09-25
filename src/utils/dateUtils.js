@@ -51,17 +51,42 @@ export const getDateFlags = (currentDate) => {
 /**
  * Format date for display
  * @param {string} dateString - Date in YYYY-MM-DD format
- * @returns {string} Formatted date string
+ * @returns {string} Formatted date string in "Day Name - Month Day Year" format
  */
 export const formatDate = (dateString) => {
   const date = new Date(dateString)
   
-  return date.toLocaleDateString('en-US', { 
-    weekday: 'long', 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
-  })
+  const weekday = date.toLocaleDateString('en-US', { weekday: 'long' })
+  const month = date.toLocaleDateString('en-US', { month: 'long' })
+  const day = date.getDate()
+  const year = date.getFullYear()
+  
+  return `${weekday} - ${month} ${day} ${year}`
+}
+
+/**
+ * Format date in "day month year" format
+ * @param {string} dateString - Date in YYYY-MM-DD format
+ * @returns {string} Formatted date string in "Day Month Year" format
+ */
+export const formatDateShort = (dateString) => {
+  const date = new Date(dateString)
+  
+  const month = date.toLocaleDateString('en-US', { month: 'long' })
+  const day = date.getDate()
+  const year = date.getFullYear()
+  
+  return `${day} ${month} ${year}`
+}
+
+/**
+ * Get day name only
+ * @param {string} dateString - Date in YYYY-MM-DD format
+ * @returns {string} Day name only
+ */
+export const getDayName = (dateString) => {
+  const date = new Date(dateString)
+  return date.toLocaleDateString('en-US', { weekday: 'long' })
 }
 
 /**
@@ -78,4 +103,36 @@ export const getDayLabel = (dateFlags) => {
   if (isToday) return '🎯 Today'
   
   return '🔮 Future'
+}
+
+/**
+ * Get day emoji based on date flags
+ * @param {object} dateFlags - Date flags object from getDateFlags
+ * @returns {string} Day emoji only
+ */
+export const getDayEmoji = (dateFlags) => {
+  const { isToday, isYesterday, isTomorrow, isPast } = dateFlags
+  
+  if (isYesterday) return '⌛'
+  if (isPast) return '📅'
+  if (isTomorrow) return '🚀'
+  if (isToday) return '🎯'
+  
+  return '🔮'
+}
+
+/**
+ * Get day text without emoji based on date flags
+ * @param {object} dateFlags - Date flags object from getDateFlags
+ * @returns {string} Day text without emoji
+ */
+export const getDayText = (dateFlags) => {
+  const { isToday, isYesterday, isTomorrow, isPast } = dateFlags
+  
+  if (isYesterday) return 'Yesterday'
+  if (isPast) return 'Past'
+  if (isTomorrow) return 'Tomorrow'
+  if (isToday) return 'Today'
+  
+  return 'Future'
 }

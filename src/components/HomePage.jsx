@@ -9,7 +9,6 @@ import Footer from './Footer'
 import { useDateContext } from '../contexts/DateContext'
 import AppTitle from './AppTitle'
 import DateNavigation from './DateNavigation'
-import ActionButtons from './ActionButtons'
 
 function HomePage() {
   const { currentDate } = useDateContext()
@@ -98,8 +97,7 @@ function HomePage() {
 
         <div className="flex flex-col space-y-6">
       
-        <DateNavigation onDateChange={handleDateChangeWithTimer} />
-        <ActionButtons onClearAll={clearAllTasks} />        
+        <DateNavigation onDateChange={handleDateChangeWithTimer} onClearAll={clearAllTasks} />
 
         <ProgressIndicator completionPercentage={getCompletionPercentage()} />
           <ProjectCategory
