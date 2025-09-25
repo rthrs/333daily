@@ -26,13 +26,17 @@ const BaseItem = ({
 
   return (
     <>
-      <input
-        type="checkbox"
-        checked={completed}
-        onChange={onToggle}
-        className="checkbox h-[40px]"
-        style={{ cursor: isDragging ? 'grabbing' : 'pointer' }}
-      />
+      <div className="flex items-center space-x-1 h-[40px]">
+        {children}
+
+        <input
+          type="checkbox"
+          checked={completed}
+          onChange={onToggle}
+          className="size-4 text-gray-400 dark:text-gray-500 bg-transparent border border-gray-400 dark:border-gray-500 rounded focus:ring-0 focus:ring-offset-0 cursor-pointer"
+          style={{ cursor: isDragging ? 'grabbing' : 'pointer' }}
+        />
+      </div>
 
       <textarea
         ref={textareaRef}
@@ -52,8 +56,6 @@ const BaseItem = ({
           e.target.style.height = e.target.scrollHeight + 'px'
         }}
       />
-      
-      {children}
     </>
   )
 }

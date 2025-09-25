@@ -74,6 +74,11 @@
   .reorder-item-dragging * {
     cursor: grabbing !important;
   }
+
+  /* Drag handle styles */
+  .drag-handle {
+    @apply cursor-grab active:cursor-grabbing p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-100 rounded hover:bg-gray-100 dark:hover:bg-gray-700;
+  }
   
   /* Textarea styles */
   .task-textarea {

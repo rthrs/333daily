@@ -40,7 +40,16 @@ const TaskItem = ({
         placeholder={`${placeholderPrefix}...`}
         category={category}
         isDragging={isDragging}
-      />
+      >
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <circle cx="8" cy="6" r="1.5"/>
+            <circle cx="8" cy="12" r="1.5"/>
+            <circle cx="8" cy="18" r="1.5"/>
+            <circle cx="16" cy="6" r="1.5"/>
+            <circle cx="16" cy="12" r="1.5"/>
+            <circle cx="16" cy="18" r="1.5"/>
+          </svg>
+      </BaseItem>
     </Reorder.Item>
   )
 }
