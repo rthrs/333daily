@@ -4,6 +4,10 @@
     "description": "Daily 333 productivity method list app",
     "type": "module",
     "main": "index.js",
+    "engines": {
+        "node": ">=18.0.0",
+        "npm": ">=8.0.0"
+    },
     "scripts": {
         "dev": "vite",
         "build": "vite build",
@@ -36,6 +40,6 @@
         "postcss": "^8.5.6",
         "prettier": "^3.6.2",
         "tailwindcss": "^4.1.13",
-        "vite": "^6.3.6"
+        "vite": "^7.1.7"
     }
 }
