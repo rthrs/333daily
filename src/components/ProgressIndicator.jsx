@@ -1,24 +1,30 @@
 import React from 'react'
 import { useDateContext } from '../contexts/DateContext'
 import { getDateFlags, formatDate } from '../utils/dateUtils'
-import { getLabelColor } from '../utils/styleUtils'
+import { getDayStyles } from '../utils/styleUtils'
 
 const ProgressIndicator = ({ completionPercentage }) => {
   const { currentDate } = useDateContext()
   const dateFlags = getDateFlags(currentDate)
+  const dayStyles = getDayStyles(dateFlags)
 
   return (
     <div className="card card-dark p-4 mb-6">
       <div className="flex justify-between mb-2  flex-col md:flex-row">
-        <span className={`text-sm font-medium ${getLabelColor(dateFlags)}`}>
+        <span className={`text-sm font-medium ${dayStyles.text}`}>
           {formatDate(currentDate)}
         </span>
-        <span className="text-sm font-medium text-blue-600 dark:text-blue-400"> Progress: {completionPercentage}%</span>
+        <span className={`text-sm font-medium ${dayStyles.text}`}> Progress: {completionPercentage}%</span>
       </div>
       <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
         <div 
-          className="bg-blue-600 dark:bg-blue-400 h-2 rounded-full transition-all duration-300"
-          style={{ width: `${completionPercentage}%` }}
+          className="h-2 rounded-full transition-all duration-300"
+          style={{ 
+            width: `${completionPercentage}%`,
+            backgroundColor: dateFlags.isToday ? '#3b82f6' : 
+                           dateFlags.isYesterday ? '#eab308' : 
+                           dateFlags.isTomorrow ? '#a855f7' : '#6b7280'
+          }}
         ></div>
       </div>
     </div>
