@@ -74,6 +74,6 @@
 
     /* Textarea styles */
     .task-textarea {
-        @apply w-full bg-transparent px-3 py-2 border-0 rounded-lg focus:outline-none focus:ring-0 resize-none min-h-[2.5rem] overflow-y-auto dark:bg-transparent dark:text-white;
+        @apply w-full bg-transparent px-3 py-2 border-0 rounded-lg focus:outline-none focus:ring-0 resize-none min-h-[2.5rem] overflow-y-auto dark:text-white placeholder:text-gray-900/50 dark:placeholder:text-white/50;
     }
 }
