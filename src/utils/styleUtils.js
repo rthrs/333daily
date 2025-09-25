@@ -12,7 +12,7 @@ export const getDayStyles = (dateFlags) => {
   
   if (isToday) {
     return {
-      container: 'bg-gray-100 dark:bg-gray-800 border border-blue-200 dark:border-blue-700',
+
       border: 'border-blue-300 dark:border-blue-600',
       background: 'bg-blue-100 dark:bg-blue-800',
       text: 'text-blue-600 dark:text-blue-400'
@@ -20,7 +20,7 @@ export const getDayStyles = (dateFlags) => {
   }
   if (isYesterday) {
     return {
-      container: 'bg-gray-100 dark:bg-gray-800 border border-yellow-200 dark:border-yellow-700',
+
       border: 'border-yellow-300 dark:border-yellow-600',
       background: 'bg-yellow-100 dark:bg-yellow-800',
       text: 'text-yellow-600 dark:text-yellow-400'
@@ -28,15 +28,15 @@ export const getDayStyles = (dateFlags) => {
   }
   if (isTomorrow) {
     return {
-      container: 'bg-gray-100 dark:bg-gray-800 border border-purple-200 dark:border-purple-700',
-      border: 'border-purple-300 dark:border-purple-600',
-      background: 'bg-purple-100 dark:bg-purple-800',
-      text: 'text-purple-600 dark:text-purple-400'
+
+      border: 'border-indigo-300 dark:border-indigo-600',
+      background: 'bg-indigo-100 dark:bg-indigo-800',
+      text: 'text-indigo-600 dark:text-indigo-400'
     }
   }
   if (isPast) {
     return {
-      container: 'bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700',
+
       border: 'border-gray-300 dark:border-gray-600',
       background: 'bg-gray-100 dark:bg-gray-800',
       text: 'text-gray-600 dark:text-gray-400'
@@ -44,10 +44,9 @@ export const getDayStyles = (dateFlags) => {
   }
 
   return {
-    container: 'bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700',
-    border: 'border-gray-300 dark:border-gray-600',
-    background: 'bg-gray-100 dark:bg-gray-800',
-    text: 'text-gray-600 dark:text-gray-400'
+    border: 'border-violet-300 dark:border-violet-600',
+    background: 'bg-violet-100 dark:bg-violet-800',
+    text: 'text-violet-600 dark:text-violet-400'
   }
 }
 
@@ -70,10 +69,10 @@ export const getInputStyles = (dateFlags) => {
   
   if (isToday) return 'border-blue-300 dark:border-blue-600 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-blue-500 dark:focus:ring-blue-400'
   if (isYesterday) return 'border-yellow-300 dark:border-yellow-600 focus:border-yellow-500 dark:focus:border-yellow-400 focus:ring-yellow-500 dark:focus:ring-yellow-400'
-  if (isTomorrow) return 'border-purple-300 dark:border-purple-600 focus:border-purple-500 dark:focus:border-purple-400 focus:ring-purple-500 dark:focus:ring-purple-400'
-  if (isPast) return 'border-gray-300 dark:border-gray-600 focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400'
+  if (isTomorrow) return 'border-indigo-300 dark:border-indigo-600 focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-indigo-500 dark:focus:ring-indigo-400'
+  if (isPast) return 'border-zinc-300 dark:border-zinc-600 focus:border-zinc-500 dark:focus:border-zinc-400 focus:ring-zinc-500 dark:focus:ring-zinc-400'
   
-  return 'border-gray-300 dark:border-gray-600 focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400'
+  return 'border-violet-300 dark:border-violet-600 focus:border-violet-500 dark:focus:border-violet-400 focus:ring-violet-500 dark:focus:ring-violet-400'
 }
 
 /**

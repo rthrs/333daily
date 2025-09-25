@@ -9,10 +9,10 @@ const ActionButtons = ({ onClearAll }) => {
   const dayStyles = getDayStyles(dateFlags)
 
   return (
-    <div className="flex items-center justify-center gap-2">
+    <div className="flex items-center justify-center space-x-2">
       <button
         onClick={goToToday}
-        className={`${dayStyles.background} ${dayStyles.border} hover:opacity-80 text-sm font-medium py-2 px-4 rounded-lg transition-all duration-200 cursor-pointer border`}
+        className={`bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:opacity-80 text-sm font-medium py-2 px-4 rounded-lg transition-all duration-200 cursor-pointer border`}
         title="Go to today"
       >
         ✨ Go To Today
@@ -20,7 +20,7 @@ const ActionButtons = ({ onClearAll }) => {
 
       <button
         onClick={onClearAll}
-        className={`${dayStyles.background} ${dayStyles.border} hover:opacity-80 text-sm font-medium py-2 px-4 rounded-lg transition-all duration-200 cursor-pointer border`}
+        className={`bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:opacity-80 text-sm font-medium py-2 px-4 rounded-lg transition-all duration-200 cursor-pointer border`}
       >
         🗑️ Clear All Tasks
       </button>

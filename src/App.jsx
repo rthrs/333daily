@@ -9,7 +9,6 @@ import Footer from './components/Footer'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { DateProvider, useDateContext } from './contexts/DateContext'
 import AppTitle from './components/AppTitle'
-import ActionsContainer from './components/ActionsContainer'
 import DateNavigation from './components/DateNavigation'
 import ActionButtons from './components/ActionButtons'
 
@@ -97,16 +96,13 @@ function AppContent() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
       <div className="container mx-auto px-4 pt-8 max-w-4xl h-full flex-1 flex flex-col">
         <AppTitle />
+
+        <div className="flex flex-col space-y-6">
       
-        <ActionsContainer>
-          <DateNavigation onDateChange={handleDateChangeWithTimer} />
-          <ActionButtons onClearAll={clearAllTasks} />        
-        </ActionsContainer>
+        <DateNavigation onDateChange={handleDateChangeWithTimer} />
+        <ActionButtons onClearAll={clearAllTasks} />        
 
         <ProgressIndicator completionPercentage={getCompletionPercentage()} />
-
-        {/* Task Categories */}
-        {/* First Row - 3 Hours Project */}
           <ProjectCategory
             title="3 Hours - Most Important Project"
             tasks={tasks.project}
@@ -122,7 +118,6 @@ function AppContent() {
             onUpdateTask={updateTask}
           />
 
-        {/* Second Row - 3 Urgent Tasks | 3 Maintenance Activities */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <TaskCategory
             title="3 Urgent Tasks"
@@ -151,7 +146,7 @@ function AppContent() {
           />
         </div>
       </div>
-
+      </div>
       <Footer />
     </div>
   )

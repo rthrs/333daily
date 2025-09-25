@@ -9,7 +9,7 @@ const ProgressIndicator = ({ completionPercentage }) => {
   const dayStyles = getDayStyles(dateFlags)
 
   return (
-    <div className="card card-dark p-4 mb-6">
+    <div className="card p-4">
       <div className="flex justify-between mb-2  flex-col md:flex-row">
         <span className={`text-sm font-medium ${dayStyles.text}`}>
           {formatDate(currentDate)}
@@ -23,7 +23,8 @@ const ProgressIndicator = ({ completionPercentage }) => {
             width: `${completionPercentage}%`,
             backgroundColor: dateFlags.isToday ? '#3b82f6' : 
                            dateFlags.isYesterday ? '#eab308' : 
-                           dateFlags.isTomorrow ? '#a855f7' : '#6b7280'
+                           dateFlags.isTomorrow ? '#6366f1' : 
+                           dateFlags.isPast ? '#71717a' : '#8b5cf6'
           }}
         ></div>
       </div>

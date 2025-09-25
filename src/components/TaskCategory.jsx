@@ -40,7 +40,7 @@ const TaskCategory = ({
   }
 
   return (
-    <div className="card card-dark">
+    <div className="card">
       <h3 className={`text-lg font-semibold mb-4 ${getCategoryColor(category)}`}>{title}</h3>
       
       <Reorder.Group
