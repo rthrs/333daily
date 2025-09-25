@@ -15,7 +15,6 @@ const TaskCategory = ({
   onReorderTasks,
   taskOrder
 }) => {
-  const { currentDate } = useDateContext()
   const [isDragging, setIsDragging] = useState(false)
   
   // Get ordered tasks based on taskOrder

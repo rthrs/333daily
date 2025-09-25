@@ -73,9 +73,13 @@
     @apply dark:bg-gray-800 dark:border-gray-700;
   }
   
-  /* Drag and drop styles */
-  .drag-handle {
-    @apply cursor-grab active:cursor-grabbing p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-100 rounded hover:bg-gray-100 dark:hover:bg-gray-700;
+  /* Drag and drop styles - entire item is draggable */
+  .reorder-item-dragging {
+    cursor: grabbing !important;
+  }
+  
+  .reorder-item-dragging * {
+    cursor: grabbing !important;
   }
   
   /* Textarea styles */
