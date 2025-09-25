@@ -27,19 +27,11 @@
   }
 
   .btn-icon {
-    @apply p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 cursor-pointer border;
+    @apply p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 cursor-pointer border border-gray-300 dark:border-gray-600;
   }
 
   .btn-timer {
-    @apply w-full py-3 px-4 rounded-lg font-medium transition-colors duration-200 cursor-pointer;
-  }
-
-  .btn-timer-active {
-    @apply bg-red-500 hover:bg-red-600 text-white;
-  }
-
-  .btn-timer-inactive {
-    @apply bg-blue-100 dark:bg-blue-900 hover:bg-blue-200 dark:hover:bg-blue-800 text-blue-700 dark:text-blue-300;
+    @apply w-full py-2 px-3 rounded-lg text-sm font-medium transition-colors duration-200 cursor-pointer;
   }
   
   /* Interactive Elements */
