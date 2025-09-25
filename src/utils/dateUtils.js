@@ -10,58 +10,21 @@ export const getToday = () => {
 };
 
 /**
- * Get yesterday's date in YYYY-MM-DD format
- */
-export const getYesterday = () => {
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-
-    return yesterday.toISOString().split('T')[0];
-};
-
-/**
- * Get tomorrow's date in YYYY-MM-DD format
- */
-export const getTomorrow = () => {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-
-    return tomorrow.toISOString().split('T')[0];
-};
-
-/**
  * Get date comparison flags for a given date
- * @param {string} currentDate - Date in YYYY-MM-DD format
+ * @param {string} dateString - Date in YYYY-MM-DD format
  * @returns {object} Object with isToday, isYesterday, isTomorrow, isPast, isFuture flags
  */
-export const getDateFlags = currentDate => {
+export const getDateFlags = dateString => {
     const today = getToday();
-    const yesterday = getYesterday();
-    const tomorrow = getTomorrow();
+    const daysDelta = getDaysDifference(today, dateString);
 
     return {
-        isToday: currentDate === today,
-        isYesterday: currentDate === yesterday,
-        isTomorrow: currentDate === tomorrow,
-        isPast: new Date(currentDate) < new Date(today),
-        isFuture: new Date(currentDate) > new Date(today),
+        isToday: daysDelta === 0,
+        isYesterday: daysDelta === -1,
+        isTomorrow: daysDelta === 1,
+        isPast: daysDelta < 0,
+        isFuture: daysDelta > 0,
     };
-};
-
-/**
- * Format date for display
- * @param {string} dateString - Date in YYYY-MM-DD format
- * @returns {string} Formatted date string in "Day Name - Month Day Year" format
- */
-export const formatDate = dateString => {
-    const date = new Date(dateString);
-
-    const weekday = date.toLocaleDateString('en-US', { weekday: 'long' });
-    const month = date.toLocaleDateString('en-US', { month: 'long' });
-    const day = date.getDate();
-    const year = date.getFullYear();
-
-    return `${weekday} - ${month} ${day} ${year}`;
 };
 
 /**
@@ -90,17 +53,31 @@ export const getDayName = dateString => {
 };
 
 /**
- * Get day text without emoji based on date flags
- * @param {object} dateFlags - Date flags object from getDateFlags
- * @returns {string} Day text without emoji
+ * Calculate the number of days between two dates
+ * @param {string} date1 - First date in YYYY-MM-DD format
+ * @param {string} date2 - Second date in YYYY-MM-DD format
+ * @returns {number} Number of days difference (positive if date2 is after date1)
  */
-export const getDayText = dateFlags => {
-    const { isToday, isYesterday, isTomorrow, isPast } = dateFlags;
+export const getDaysDifference = (date1, date2) => {
+    const d1 = new Date(date1);
+    const d2 = new Date(date2);
+    const diffTime = d2.getTime() - d1.getTime();
 
-    if (isYesterday) return 'Yesterday';
-    if (isPast) return 'Past';
-    if (isTomorrow) return 'Tomorrow';
-    if (isToday) return 'Today';
+    return Math.round(diffTime / (1000 * 60 * 60 * 24));
+};
 
-    return 'Future';
+/**
+ * Get day text using Intl.RelativeTimeFormat with natural language
+ * @param {object} dateFlags - Date flags object from getDateFlags
+ * @param {string} dateString - Current date in YYYY-MM-DD format
+ * @returns {string} Day text with natural language formatting
+ */
+export const getDayText = dateString => {
+    const today = getToday();
+    const daysDelta = getDaysDifference(today, dateString);
+
+    // Use Intl.RelativeTimeFormat with formatToParts for natural language
+    const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+
+    return rtf.format(daysDelta, 'day');
 };
