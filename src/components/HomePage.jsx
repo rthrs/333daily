@@ -9,6 +9,7 @@ import Footer from './Footer';
 import { useDateContext } from '../contexts/DateContext';
 import AppTitle from './AppTitle';
 import DateNavigation from './DateNavigation';
+import { DEFAULT_TASK_ORDER } from '../constants';
 
 function HomePage() {
     const { currentDate } = useDateContext();
@@ -20,7 +21,10 @@ function HomePage() {
         tasks,
         completedTasks,
         timeSpent,
-        taskOrder = { urgent: [0, 1, 2], maintenance: [0, 1, 2] },
+        taskOrder = {
+            urgent: DEFAULT_TASK_ORDER,
+            maintenance: DEFAULT_TASK_ORDER,
+        },
     } = dailyData;
 
     // Handle date change - stop timer when changing days
@@ -75,12 +79,38 @@ function HomePage() {
                 },
             });
         } else {
+            // Get the current task order for this category
+            const currentOrder = taskOrder[category] || DEFAULT_TASK_ORDER;
+
+            // Toggle the completion status
+            const newCompletedTasks = completedTasks[category].map(
+                (completed, i) => (i === index ? !completed : completed)
+            );
+
+            // Check if the task is being completed (not uncompleted)
+            const isBeingCompleted = !completedTasks[category][index];
+
+            let newOrder = currentOrder;
+            if (isBeingCompleted) {
+                // Move completed task to the bottom
+                const originalIndex = currentOrder.indexOf(index);
+                newOrder = [
+                    ...currentOrder.filter((_, i) => i !== originalIndex),
+                    index,
+                ];
+            } else {
+                // When uncompleting, keep the current order (don't move back up)
+                newOrder = currentOrder;
+            }
+
             updateDailyData({
                 completedTasks: {
                     ...completedTasks,
-                    [category]: completedTasks[category].map((completed, i) =>
-                        i === index ? !completed : completed
-                    ),
+                    [category]: newCompletedTasks,
+                },
+                taskOrder: {
+                    ...taskOrder,
+                    [category]: newOrder,
                 },
             });
         }

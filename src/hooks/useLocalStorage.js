@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { DEFAULT_TASK_ORDER } from '../constants';
 
 export const useLocalStorage = (key, initialValue) => {
     const [storedValue, setStoredValue] = useState(() => {
@@ -58,8 +59,8 @@ const initialDailyData = {
         project: 0,
     },
     taskOrder: {
-        urgent: [0, 1, 2],
-        maintenance: [0, 1, 2],
+        urgent: DEFAULT_TASK_ORDER,
+        maintenance: DEFAULT_TASK_ORDER,
     },
     lastUpdated: new Date().toISOString(),
 };
