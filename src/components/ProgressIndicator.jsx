@@ -9,7 +9,7 @@ const ProgressIndicator = ({ completionPercentage }) => {
 
   return (
     <div className="card card-dark p-4 mb-6">
-      <div className="flex items-center justify-between mb-2">
+      <div className="flex justify-between mb-2  flex-col md:flex-row">
         <span className={`text-sm font-medium ${getLabelColor(dateFlags)}`}>
           {formatDate(currentDate)}
         </span>

@@ -22,15 +22,15 @@ const ProjectCategory = ({
 
   return (
     <div className="card card-dark">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className={`text-lg font-semibold ${color} dark:text-blue-400`}>{title}</h3>
+      <div className="flex justify-between mb-4 flex-col md:flex-row">
+        <h3 className={`text-lg font-semibold ${color} dark:text-blue-400 mb-3 md:mb-0`}>{title}</h3>
         <div className="flex items-center space-x-3">
-          <div className="text-sm text-gray-600 dark:text-gray-300">
+          <div className="text-sm font-light text-gray-600 dark:text-gray-300">
             {formatTime(timeSpent)} / {formatTime(timeTarget)}
           </div>
           <button
             onClick={() => onStartTimer(category)}
-            className="btn-icon"
+            className="btn-icon p-1 rounded-full"
             title={isTimerRunning && currentTimer === category ? 'Stop Timer' : 'Start Timer'}
           >
             {isTimerRunning && currentTimer === category ? (
