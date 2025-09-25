@@ -36,16 +36,6 @@ export const getCategoryBorder = (category) => {
   return CATEGORY_COLORS[category]?.border || 'border-gray-200 dark:border-gray-700'
 }
 
-// Day-themed category colors - all categories use the same day color
-export const getDayCategoryColors = (dayStyles) => {
-  const baseColor = dayStyles.text.replace('text-', '').replace(' dark:text-', '-').split('-')[0]
-  
-  return {
-    text: dayStyles.text,
-    background: `bg-${baseColor}-100 dark:bg-${baseColor}-950 hover:bg-${baseColor}-200 dark:hover:bg-${baseColor}-900`,
-    border: `border-${baseColor}-200 dark:border-${baseColor}-700 hover:border-${baseColor}-300 dark:hover:border-${baseColor}-600`
-  }
-}
 
 export const getDayCategoryColor = (dayStyles) => {
   return dayStyles.text

@@ -12,7 +12,6 @@ const TaskCategory = ({
   tasks, 
   completedTasks, 
   category, 
-  color,
   onToggleTask,
   onUpdateTask,
   onReorderTasks,
@@ -71,7 +70,6 @@ const TaskCategory = ({
             onUpdate={(value) => onUpdateTask(category, originalIndex, value)}
             placeholderPrefix={placeholderPrefix}
             category={category}
-            color={color}
           />
         ))}
       </Reorder.Group>

@@ -52,36 +52,3 @@ export const getDayStyles = (dateFlags) => {
   }
 }
 
-/**
- * Get day-specific border styles for buttons and inputs (legacy function for compatibility)
- * @param {object} dateFlags - Date flags object from getDateFlags
- * @returns {string} Border style classes
- */
-export const getBorderStyles = (dateFlags) => {
-  return getDayStyles(dateFlags).border
-}
-
-/**
- * Get day-specific input focus styles
- * @param {object} dateFlags - Date flags object from getDateFlags
- * @returns {string} Input focus style classes
- */
-export const getInputStyles = (dateFlags) => {
-  const { isToday, isYesterday, isTomorrow, isPast } = dateFlags
-  
-  if (isToday) return 'border-teal-300 dark:border-teal-700 focus:border-teal-500 dark:focus:border-teal-400 focus:ring-teal-500 dark:focus:ring-teal-400'
-  if (isYesterday) return 'border-orange-300 dark:border-orange-700 focus:border-orange-500 dark:focus:border-orange-400 focus:ring-orange-500 dark:focus:ring-orange-400'
-  if (isTomorrow) return 'border-sky-300 dark:border-sky-700 focus:border-sky-500 dark:focus:border-sky-400 focus:ring-sky-500 dark:focus:ring-sky-400'
-  if (isPast) return 'border-red-300 dark:border-red-700 focus:border-red-500 dark:focus:border-red-400 focus:ring-red-500 dark:focus:ring-red-400'
-  
-  return 'border-purple-300 dark:border-purple-700 focus:border-purple-500 dark:focus:border-purple-400 focus:ring-purple-500 dark:focus:ring-purple-400'
-}
-
-/**
- * Get day-specific label color for progress indicator (legacy function for compatibility)
- * @param {object} dateFlags - Date flags object from getDateFlags
- * @returns {string} Label color classes
- */
-export const getLabelColor = (dateFlags) => {
-  return getDayStyles(dateFlags).text
-}

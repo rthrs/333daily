@@ -12,7 +12,6 @@ const ProjectCategory = ({
   tasks, 
   completedTasks, 
   category, 
-  color, 
   timeSpent, 
   timeTarget,
   isTimerRunning,

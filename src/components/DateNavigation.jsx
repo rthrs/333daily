@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { useTheme } from '../contexts/ThemeContext'
 import { useDateContext } from '../contexts/DateContext'
-import { getDateFlags, formatDateShort, getDayName, getDayEmoji, getDayText } from '../utils/dateUtils'
+import { getDateFlags, formatDateShort, getDayName, getDayText } from '../utils/dateUtils'
 import { getDayStyles } from '../utils/styleUtils'
 
 const DateNavigation = ({ onDateChange, onClearAll }) => {

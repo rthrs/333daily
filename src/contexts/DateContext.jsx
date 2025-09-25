@@ -25,17 +25,6 @@ export const DateProvider = ({ children, onDateChange }) => {
     handleDateChange(getToday())
   }
 
-  const goToYesterday = () => {
-    const yesterday = new Date()
-    yesterday.setDate(yesterday.getDate() - 1)
-    handleDateChange(yesterday.toISOString().split('T')[0])
-  }
-
-  const goToTomorrow = () => {
-    const tomorrow = new Date()
-    tomorrow.setDate(tomorrow.getDate() + 1)
-    handleDateChange(tomorrow.toISOString().split('T')[0])
-  }
 
   const goToPreviousDay = () => {
     const prevDate = new Date(currentDate)
@@ -58,8 +47,6 @@ export const DateProvider = ({ children, onDateChange }) => {
     setCurrentDate,
     handleDateChange,
     goToToday,
-    goToYesterday,
-    goToTomorrow,
     goToPreviousDay,
     goToNextDay
   }
