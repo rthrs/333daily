@@ -46,19 +46,12 @@ const DateNavigation = ({ onDateChange, onClearAll }) => {
   )
 
   return (
-    <div className={`card ${dayStyles.background} relative`}>
-      {/* Day text in bottom right corner of outer box */}
-      <div className="absolute bottom-0 right-0 pr-6">
+    <div className={`card p-0`}>
       
-
-        <span className={`text-xs uppercase font-bold ${dayStyles.text}`}>
-        { getDayText(dateFlags)}
-        </span>
-      </div>
       
-      <div className={`card space-y-4 px-4`}>
+      <div className={`card space-y-4 px-4 border-y-0 border-x-24 ${dayStyles.background}`}>
           <div className="text-center">
-            <h2 className={`text-3xl font-bold ${dayStyles.text} hover:opacity-80 transition-opacity cursor-pointer`} onClick={handleCalendarClick}>
+            <h2 className={`text-3xl font-bold hover:opacity-80 transition-opacity cursor-pointer`} onClick={handleCalendarClick}>
               {formatDateShort(currentDate)}
             </h2>
             <p className={`text-lg font-light mt-1`}>
@@ -72,7 +65,7 @@ const DateNavigation = ({ onDateChange, onClearAll }) => {
                 type="date"
                 name="date"
                 value={currentDate}
-                onValueChange={(e) => handleDateInputChange(e.target.value)}
+                onChange={(e) => handleDateInputChange(e.target.value)}
                 className="sr-only"
                 style={{
                   colorScheme: isDark ? 'dark' : 'light'

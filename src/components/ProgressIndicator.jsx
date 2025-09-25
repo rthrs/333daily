@@ -10,9 +10,10 @@ const ProgressIndicator = ({ completionPercentage }) => {
 
   return (
     <div className="card p-4">
-      <div className="flex justify-between mb-2  flex-col md:flex-row">
+      <div className="flex mb-2  flex-col md:flex-row">
   
-        <span className={`ml-auto text-sm font-medium ${dayStyles.text}`}> Progress: {completionPercentage}%</span>
+        <span className={`ml-auto text-sm font-medium text-gray-600 dark:text-gray-300`}>Progress: &nbsp;</span>
+        <span className={`text-sm font-medium ${dayStyles.text}`}>{completionPercentage}%</span>
       </div>
       <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
         <div 

@@ -12,39 +12,36 @@ export const getDayStyles = (dateFlags) => {
   
   if (isToday) {
     return {
-      background: 'bg-teal-100 dark:bg-teal-900/90 dark:border-teal-800/60',
+      background: 'teal-100 dark:bg-teal-950 dark:border-teal-700',
       text: 'text-teal-600 dark:text-teal-400',
-      progressColor: 'bg-teal-500 dark:bg-teal-600'
+      progressColor: 'bg-teal-500 dark:bg-teal-700'
     }
   }
   if (isYesterday) {
     return {
-
-      background: 'bg-yellow-100 dark:bg-yellow-900/90 dark:border-yellow-800/60',
-      text: 'text-yellow-600 dark:text-yellow-400',
-      progressColor: 'bg-yellow-500 dark:bg-yellow-600'
+      background: 'bg-orange-100 dark:bg-orange-950 dark:border-orange-700',
+      text: 'text-orange-600 dark:text-orange-400',
+      progressColor: 'bg-orange-500 dark:bg-orange-600'
     }
   }
   if (isTomorrow) {
     return {
-
-      background: 'bg-sky-100 dark:bg-sky-900/90 dark:border-sky-800/60',
-      text: 'text-sky-600 dark:text-sky-400',
-      progressColor: 'bg-sky-500 dark:bg-sky-600'
+      background: 'bg-blue-100 dark:bg-blue-950 dark:border-blue-700',
+      text: 'text-blue-600 dark:text-blue-400',
+      progressColor: 'bg-blue-500 dark:bg-blue-600'
     }
   }
   if (isPast) {
     return {
-
-      background: 'bg-slate-100 dark:bg-slate-700/90',
-      text: 'text-slate-600 dark:text-slate-400',
-      progressColor: 'bg-slate-500 dark:bg-slate-600'
+      background: 'bg-red-100 dark:bg-red-950 dark:border-red-700',
+      text: 'text-red-600 dark:text-red-400',
+      progressColor: 'bg-red-500 dark:bg-red-600'
     }
   }
 
   // isFuture
   return {
-    background: 'bg-purple-100 dark:bg-purple-900/90 dark:border-purple-800/60',
+    background: 'bg-purple-100 dark:bg-purple-950 dark:border-purple-700',
     text: 'text-purple-600 dark:text-purple-400',
     progressColor: 'bg-purple-500 dark:bg-purple-600'
   }
