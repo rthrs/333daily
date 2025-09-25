@@ -12,7 +12,7 @@ const ProgressIndicator = ({ completionPercentage }) => {
         <div className="card p-4">
             <div className="flex mb-2 flex-col md:flex-row justify-between">
                 <h3
-                    className={`text-lg first-letter:uppercase font-semibold ${styles.text} mb-3 md:mb-0`}
+                    className={`text-lg first-letter:uppercase font-semibold ${styles.navigation.text} mb-3 md:mb-0`}
                 >
                     {getDayText(currentDate)}
                 </h3>
@@ -23,14 +23,14 @@ const ProgressIndicator = ({ completionPercentage }) => {
                     >
                         Progress: &nbsp;
                     </span>
-                    <span className={`${styles.text} font-bold`}>
+                    <span className={`${styles.navigation.text} font-bold`}>
                         {completionPercentage}%
                     </span>
                 </div>
             </div>
             <ProgressBar
                 progress={completionPercentage}
-                progressColor={styles.progressColor}
+                progressColor={styles.progress}
             />
         </div>
     );

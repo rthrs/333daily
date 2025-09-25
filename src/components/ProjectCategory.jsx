@@ -2,7 +2,7 @@ import React from 'react';
 import { formatTime, getTimeProgress } from '../utils/timeUtils';
 import ProjectItem from './ProjectItem';
 import ProgressBar from './ProgressBar';
-import { getDayCategoryColor } from '../utils/styleUtils';
+import { getNavigationTextColor } from '../utils/styleUtils';
 import { useCurrentDateStyles } from '../hooks/useCurrentDateStyles';
 
 const ProjectCategory = ({
@@ -25,7 +25,7 @@ const ProjectCategory = ({
         <div className="card card-dark mb-6">
             <div className="flex justify-between mb-4 flex-col md:flex-row">
                 <h3
-                    className={`text-lg font-semibold ${getDayCategoryColor(baseColor)} mb-3 md:mb-0`}
+                    className={`text-lg font-semibold ${getNavigationTextColor(baseColor)} mb-3 md:mb-0`}
                 >
                     {title}
                 </h3>
@@ -69,7 +69,7 @@ const ProjectCategory = ({
             <div className="mb-4">
                 <ProgressBar
                     progress={progress}
-                    progressColor={styles.progressColor}
+                    progressColor={styles.progress}
                 />
             </div>
 

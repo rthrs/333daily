@@ -5,7 +5,7 @@
 
 import { useMemo } from 'react';
 import { useDateContext } from '../contexts/DateContext';
-import { DAY_STYLES, DAY_TO_BASE_COLOR } from '../constants/styles.js';
+import { STYLES_CONFIG, DAY_TO_BASE_COLOR } from '../constants/styles.js';
 
 /**
  * Get base color from day kind
@@ -22,7 +22,7 @@ const getBaseColor = dayKind => {
  * @returns {object} Object with all day-specific style classes
  */
 const getDayStyles = baseColor => {
-    return DAY_STYLES[baseColor];
+    return STYLES_CONFIG[baseColor];
 };
 
 /**

@@ -53,7 +53,7 @@ const DateNavigation = ({ onDateChange, onClearAll }) => {
     return (
         <div className={`card p-0 dark:text-gray-100`}>
             <div
-                className={`card space-y-4 px-4 border-y-0 border-x-24 ${styles.background} ${styles.border}`}
+                className={`card space-y-4 px-4 border-y-0 border-x-24 ${styles.navigation.background} ${styles.navigation.border}`}
             >
                 <div className="text-center">
                     <h2

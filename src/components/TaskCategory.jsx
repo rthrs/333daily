@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Reorder } from 'motion/react';
 import TaskItem from './TaskItem';
-import { getDayCategoryColor } from '../utils/styleUtils';
+import { getNavigationTextColor } from '../utils/styleUtils';
 import { useCurrentDateStyles } from '../hooks/useCurrentDateStyles';
 
 const TaskCategory = ({
@@ -42,7 +42,7 @@ const TaskCategory = ({
     return (
         <div className="card">
             <h3
-                className={`text-lg font-semibold mb-4 ${getDayCategoryColor(baseColor)}`}
+                className={`text-lg font-semibold mb-4 ${getNavigationTextColor(baseColor)}`}
             >
                 {title}
             </h3>

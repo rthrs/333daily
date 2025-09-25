@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { useDateContext } from '../contexts/DateContext';
 import { useTheme } from '../contexts/ThemeContext';
+import { getTaskBackground, getTaskBorder } from '../utils/styleUtils';
+import { useCurrentDateStyles } from '../hooks/useCurrentDateStyles';
 
 const BaseItem = ({
     task,
@@ -11,9 +13,13 @@ const BaseItem = ({
     category,
     isDragging = false,
     children,
+    className = '',
 }) => {
-    const { currentDate } = useDateContext();
     const { isDark } = useTheme();
+    const { currentDate } = useDateContext();
+
+    const { baseColor } = useCurrentDateStyles();
+
     const textareaRef = useRef(null);
 
     // Auto-resize textarea on mount and when task changes
@@ -28,7 +34,9 @@ const BaseItem = ({
     }, [task]);
 
     return (
-        <>
+        <div
+            className={`flex px-3 rounded-lg border ${getTaskBorder(baseColor)} ${getTaskBackground(baseColor)} ${className}`}
+        >
             <div className="flex items-center space-x-1 h-[40px]">
                 {children}
 
@@ -47,9 +55,9 @@ const BaseItem = ({
                 value={task}
                 onChange={e => onUpdate(e.target.value)}
                 placeholder={placeholder}
-                className={`task-textarea task-textarea-dark flex-1 ${
+                className={`task-textarea flex-1 ${
                     completed
-                        ? 'line-through text-gray-500 dark:text-gray-400'
+                        ? 'line-through text-gray-600 dark:text-gray-300'
                         : ''
                 }`}
                 rows={1}
@@ -61,7 +69,7 @@ const BaseItem = ({
                     e.target.style.height = e.target.scrollHeight + 'px';
                 }}
             />
-        </>
+        </div>
     );
 };
 
