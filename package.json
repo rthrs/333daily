@@ -12,6 +12,7 @@
         "lint:fix": "eslint . --ext js,jsx --fix",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
+        "postinstall": "npm audit fix --force",
         "release": "git checkout main && git pull origin main && git merge develop && git push origin main && git checkout -"
     },
     "dependencies": {
