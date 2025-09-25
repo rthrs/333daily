@@ -2,7 +2,9 @@ import React from 'react'
 import { useDateContext } from '../contexts/DateContext'
 import { formatTime, getTimeProgress } from '../utils/timeUtils'
 import ProjectItem from './ProjectItem'
-import { getCategoryColor } from '../constants/categories'
+import { getDayCategoryColor } from '../constants/categories'
+import { getDateFlags } from '../utils/dateUtils'
+import { getDayStyles } from '../utils/styleUtils'
 
 const ProjectCategory = ({ 
   title, 
@@ -20,11 +22,13 @@ const ProjectCategory = ({
 }) => {
   const { currentDate } = useDateContext()
   const progress = getTimeProgress(timeSpent, timeTarget)
+  const dateFlags = getDateFlags(currentDate)
+  const dayStyles = getDayStyles(dateFlags)
 
   return (
     <div className="card card-dark mb-6">
       <div className="flex justify-between mb-4 flex-col md:flex-row">
-        <h3 className={`text-lg font-semibold ${getCategoryColor(category)} mb-3 md:mb-0`}>{title}</h3>
+        <h3 className={`text-lg font-semibold ${getDayCategoryColor(dayStyles)} mb-3 md:mb-0`}>{title}</h3>
         <div className="flex items-center space-x-3">
           <div className="text-sm font-light text-gray-600 dark:text-gray-300">
             {formatTime(timeSpent)} / {formatTime(timeTarget)}
@@ -53,7 +57,7 @@ const ProjectCategory = ({
       <div className="mb-4">
         <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
           <div 
-            className={`h-3 rounded-full transition-all duration-300 ${color.replace('text-', 'bg-')} dark:bg-blue-400`}
+            className={`h-3 rounded-full transition-all duration-300 ${dayStyles.progressColor}`}
             style={{ width: `${progress}%` }}
           ></div>
         </div>

@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { Reorder } from 'motion/react'
 import BaseItem from './BaseItem'
-import { getCategoryBackground, getCategoryBorder } from '../constants/categories'
+import { getDayCategoryBackground, getDayCategoryBorder } from '../constants/categories'
+import { useDateContext } from '../contexts/DateContext'
+import { getDateFlags } from '../utils/dateUtils'
+import { getDayStyles } from '../utils/styleUtils'
 
 const TaskItem = ({ 
   task, 
@@ -13,11 +16,14 @@ const TaskItem = ({
   category
 }) => {
   const [isDragging, setIsDragging] = useState(false)
+  const { currentDate } = useDateContext()
+  const dateFlags = getDateFlags(currentDate)
+  const dayStyles = getDayStyles(dateFlags)
 
   return (
     <Reorder.Item
       value={index}
-      className={`flex px-3 py-1 rounded-lg border ${getCategoryBorder(category)} ${getCategoryBackground(category)} ${isDragging ? 'reorder-item-dragging' : 'cursor-grab'}`}
+      className={`flex px-3 py-1 rounded-lg border ${getDayCategoryBorder(dayStyles)} ${getDayCategoryBackground(dayStyles)} ${isDragging ? 'reorder-item-dragging' : 'cursor-grab'}`}
       style={{ 
         position: 'relative',
         cursor: isDragging ? 'grabbing' : 'grab',

@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { Reorder } from 'motion/react'
 import { useDateContext } from '../contexts/DateContext'
 import TaskItem from './TaskItem'
-import { getCategoryColor } from '../constants/categories'
+import { getDayCategoryColor, getDayCategoryBackground, getDayCategoryBorder } from '../constants/categories'
+import { getDateFlags } from '../utils/dateUtils'
+import { getDayStyles } from '../utils/styleUtils'
 
 const TaskCategory = ({ 
   title, 
@@ -17,6 +19,9 @@ const TaskCategory = ({
   taskOrder
 }) => {
   const [isDragging, setIsDragging] = useState(false)
+  const { currentDate } = useDateContext()
+  const dateFlags = getDateFlags(currentDate)
+  const dayStyles = getDayStyles(dateFlags)
   
   // Get ordered tasks based on taskOrder
   const orderedTasks = taskOrder.map(orderIndex => ({
@@ -41,7 +46,7 @@ const TaskCategory = ({
 
   return (
     <div className="card">
-      <h3 className={`text-lg font-semibold mb-4 ${getCategoryColor(category)}`}>{title}</h3>
+      <h3 className={`text-lg font-semibold mb-4 ${getDayCategoryColor(dayStyles)}`}>{title}</h3>
       
       <Reorder.Group
         axis="y"

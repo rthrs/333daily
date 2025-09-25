@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useDateContext } from '../contexts/DateContext'
+import { useTheme } from '../contexts/ThemeContext'
 
 const BaseItem = ({ 
   task, 
@@ -12,6 +13,7 @@ const BaseItem = ({
   children
 }) => {
   const { currentDate } = useDateContext()
+  const { isDark } = useTheme()
   const textareaRef = useRef(null)
 
   // Auto-resize textarea on mount and when task changes
@@ -40,7 +42,7 @@ const BaseItem = ({
 
       <textarea
         ref={textareaRef}
-        key={`${category}-input-${currentDate}`}
+        key={`${category}-input-${currentDate}-${isDark}`}
         value={task}
         onChange={(e) => onUpdate(e.target.value)}
         placeholder={placeholder}

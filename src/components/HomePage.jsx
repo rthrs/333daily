@@ -100,20 +100,19 @@ function HomePage() {
         <DateNavigation onDateChange={handleDateChangeWithTimer} onClearAll={clearAllTasks} />
 
         <ProgressIndicator completionPercentage={getCompletionPercentage()} />
-          <ProjectCategory
-            title="3 Hours - Most Important Project"
-            tasks={tasks.project}
-            completedTasks={completedTasks.project}
-            category="project"
-            color="text-blue-600"
-            timeSpent={timeSpent.project}
-            timeTarget={MAIN_PROJECT_TARGET_DURATION}
-            isTimerRunning={isTimerRunning}
-            currentTimer={currentTimer}
-            onStartTimer={startTimer}
-            onToggleTask={toggleTask}
-            onUpdateTask={updateTask}
-          />
+                <ProjectCategory
+                  title="3 Hours - Most Important Project"
+                  tasks={tasks.project}
+                  completedTasks={completedTasks.project}
+                  category="project"
+                  timeSpent={timeSpent.project}
+                  timeTarget={MAIN_PROJECT_TARGET_DURATION}
+                  isTimerRunning={isTimerRunning}
+                  currentTimer={currentTimer}
+                  onStartTimer={startTimer}
+                  onToggleTask={toggleTask}
+                  onUpdateTask={updateTask}
+                />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <TaskCategory
@@ -122,7 +121,6 @@ function HomePage() {
             tasks={tasks.urgent}
             completedTasks={completedTasks.urgent}
             category="urgent"
-            color="text-red-600"
             onToggleTask={toggleTask}
             onUpdateTask={updateTask}
             onReorderTasks={reorderTasks}
@@ -135,7 +133,6 @@ function HomePage() {
             tasks={tasks.maintenance}
             completedTasks={completedTasks.maintenance}
             category="maintenance"
-            color="text-green-600"
             onToggleTask={toggleTask}
             onUpdateTask={updateTask}
             onReorderTasks={reorderTasks}
