@@ -22,7 +22,7 @@ const ProjectCategory = ({
   const progress = getTimeProgress(timeSpent, timeTarget)
 
   return (
-    <div className="card card-dark">
+    <div className="card card-dark mb-6">
       <div className="flex justify-between mb-4 flex-col md:flex-row">
         <h3 className={`text-lg font-semibold ${getCategoryColor(category)} mb-3 md:mb-0`}>{title}</h3>
         <div className="flex items-center space-x-3">

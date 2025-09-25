@@ -107,7 +107,6 @@ function AppContent() {
 
         {/* Task Categories */}
         {/* First Row - 3 Hours Project */}
-        <div className="mb-6">
           <ProjectCategory
             title="3 Hours - Most Important Project"
             tasks={tasks.project}
@@ -122,7 +121,6 @@ function AppContent() {
             onToggleTask={toggleTask}
             onUpdateTask={updateTask}
           />
-        </div>
 
         {/* Second Row - 3 Urgent Tasks | 3 Maintenance Activities */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
