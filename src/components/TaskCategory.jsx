@@ -52,7 +52,7 @@ const TaskCategory = ({
         axis="y"
         values={orderedTasks.map(task => task.originalIndex)}
         onReorder={handleReorder}
-        className={`space-y-1 transition-all duration-150 ${
+        className={`space-y-3 transition-all duration-150 ${
           isDragging 
             ? 'bg-blue-50 dark:bg-blue-900 border-2 border-dashed border-blue-300 dark:border-blue-600 rounded-lg p-2' 
             : ''
@@ -71,6 +71,7 @@ const TaskCategory = ({
             onUpdate={(value) => onUpdateTask(category, originalIndex, value)}
             placeholderPrefix={placeholderPrefix}
             category={category}
+            color={color}
           />
         ))}
       </Reorder.Group>

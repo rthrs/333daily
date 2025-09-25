@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDateContext } from '../contexts/DateContext'
 import { formatTime, getTimeProgress } from '../utils/timeUtils'
+import ProjectItem from './ProjectItem'
 
 const ProjectCategory = ({ 
   title, 
@@ -53,22 +54,13 @@ const ProjectCategory = ({
       </div>
 
       <div className="space-y-3">
-        <div className="flex items-center space-x-3">
-          <input
-            type="checkbox"
-            checked={completedTasks}
-            onChange={() => onToggleTask(category)}
-            className="checkbox"
-          />
-          <input
-            key={`project-${currentDate}`}
-            type="text"
-            value={tasks}
-            onChange={(e) => onUpdateTask(category, null, e.target.value)}
-            placeholder="Your most important project..."
-            className={`input-field input-field-dark flex-1 ${completedTasks ? 'line-through text-gray-500 dark:text-gray-400' : ''}`}
-          />
-        </div>
+        <ProjectItem
+          task={tasks}
+          completed={completedTasks}
+          onToggle={() => onToggleTask(category)}
+          onUpdate={(value) => onUpdateTask(category, null, value)}
+          placeholder="Your most important project..."
+        />
       </div>
     </div>
   )
