@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Reorder } from 'motion/react'
 import { useDateContext } from '../contexts/DateContext'
 
@@ -12,6 +12,17 @@ const TaskItem = ({
   category
 }) => {
   const { currentDate } = useDateContext()
+  const textareaRef = useRef(null)
+
+  // Auto-resize textarea on mount and when task changes
+  useEffect(() => {
+    if (textareaRef.current) {
+      // Reset height to 'auto' first to get accurate scrollHeight measurement
+      // This ensures the textarea can both shrink and grow properly
+      textareaRef.current.style.height = 'auto'
+      textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px'
+    }
+  }, [task])
 
   return (
     <Reorder.Item
@@ -35,16 +46,23 @@ const TaskItem = ({
         className="checkbox"
       />
 
-      {/* Task input */}
-      <input
+      {/* Task textarea */}
+      <textarea
+        ref={textareaRef}
         key={`${category}-input-${index}-${currentDate}`}
-        type="text"
         value={task}
         onChange={(e) => onUpdate(e.target.value)}
         placeholder={`${placeholderPrefix}...`}
-        className={`input-field input-field-dark flex-1 ${
+        className={`task-textarea task-textarea-dark flex-1 ${
           completed ? 'line-through text-gray-500 dark:text-gray-400' : ''
         }`}
+        rows={1}
+        onInput={(e) => {
+          // Reset height to 'auto' first to get accurate scrollHeight measurement
+          // This ensures the textarea can both shrink and grow properly
+          e.target.style.height = 'auto'
+          e.target.style.height = e.target.scrollHeight + 'px'
+        }}
       />
     </Reorder.Item>
   )
