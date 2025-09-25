@@ -1,80 +1,86 @@
-import React, { useState } from 'react'
-import { Reorder } from 'motion/react'
-import { useDateContext } from '../contexts/DateContext'
-import TaskItem from './TaskItem'
-import { getDayCategoryColor, getDayCategoryBackground, getDayCategoryBorder } from '../constants/categories'
-import { getDateFlags } from '../utils/dateUtils'
-import { getDayStyles } from '../utils/styleUtils'
+import React, { useState } from 'react';
+import { Reorder } from 'motion/react';
+import { useDateContext } from '../contexts/DateContext';
+import TaskItem from './TaskItem';
+import { getDayCategoryColor } from '../constants/categories';
+import { getDateFlags } from '../utils/dateUtils';
+import { getDayStyles } from '../utils/styleUtils';
 
-const TaskCategory = ({ 
-  title, 
-  placeholderPrefix,
-  tasks, 
-  completedTasks, 
-  category, 
-  onToggleTask,
-  onUpdateTask,
-  onReorderTasks,
-  taskOrder
+const TaskCategory = ({
+    title,
+    placeholderPrefix,
+    tasks,
+    completedTasks,
+    category,
+    onToggleTask,
+    onUpdateTask,
+    onReorderTasks,
+    taskOrder,
 }) => {
-  const [isDragging, setIsDragging] = useState(false)
-  const { currentDate } = useDateContext()
-  const dateFlags = getDateFlags(currentDate)
-  const dayStyles = getDayStyles(dateFlags)
-  
-  // Get ordered tasks based on taskOrder
-  const orderedTasks = taskOrder.map(orderIndex => ({
-    task: tasks[orderIndex],
-    completed: completedTasks[orderIndex],
-    originalIndex: orderIndex
-  }))
+    const [isDragging, setIsDragging] = useState(false);
+    const { currentDate } = useDateContext();
+    const dateFlags = getDateFlags(currentDate);
+    const dayStyles = getDayStyles(dateFlags);
 
-  const handleReorder = (newOrder) => {
-    // newOrder contains the original indices in their new order
-    // Convert to the new taskOrder array
-    onReorderTasks(category, newOrder)
-  }
+    // Get ordered tasks based on taskOrder
+    const orderedTasks = taskOrder.map(orderIndex => ({
+        task: tasks[orderIndex],
+        completed: completedTasks[orderIndex],
+        originalIndex: orderIndex,
+    }));
 
-  const handleDragStart = () => {
-    setIsDragging(true)
-  }
+    const handleReorder = newOrder => {
+        // newOrder contains the original indices in their new order
+        // Convert to the new taskOrder array
+        onReorderTasks(category, newOrder);
+    };
 
-  const handleDragEnd = () => {
-    setIsDragging(false)
-  }
+    const handleDragStart = () => {
+        setIsDragging(true);
+    };
 
-  return (
-    <div className="card">
-      <h3 className={`text-lg font-semibold mb-4 ${getDayCategoryColor(dayStyles)}`}>{title}</h3>
-      
-      <Reorder.Group
-        axis="y"
-        values={orderedTasks.map(task => task.originalIndex)}
-        onReorder={handleReorder}
-        className={`space-y-3 transition-all duration-150 ${
-          isDragging 
-            ? 'bg-blue-50 dark:bg-blue-900 border-2 border-dashed border-blue-300 dark:border-blue-600 rounded-lg p-2' 
-            : ''
-        }`}
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
-        transition={{ duration: 0.15, ease: "easeOut" }}
-      >
-        {orderedTasks.map(({ task, completed, originalIndex }) => (
-          <TaskItem
-            key={`${category}-${originalIndex}`}
-            task={task}
-            completed={completed}
-            index={originalIndex}
-            onToggle={() => onToggleTask(category, originalIndex)}
-            onUpdate={(value) => onUpdateTask(category, originalIndex, value)}
-            placeholderPrefix={placeholderPrefix}
-            category={category}
-          />
-        ))}
-      </Reorder.Group>
-    </div>
-  )
-}
+    const handleDragEnd = () => {
+        setIsDragging(false);
+    };
 
-export default TaskCategory
+    return (
+        <div className="card">
+            <h3
+                className={`text-lg font-semibold mb-4 ${getDayCategoryColor(dayStyles)}`}
+            >
+                {title}
+            </h3>
+
+            <Reorder.Group
+                axis="y"
+                values={orderedTasks.map(task => task.originalIndex)}
+                onReorder={handleReorder}
+                className={`space-y-3 transition-all duration-150 ${
+                    isDragging
+                        ? 'bg-blue-50 dark:bg-blue-900 border-2 border-dashed border-blue-300 dark:border-blue-600 rounded-lg p-2'
+                        : ''
+                }`}
+                onDragStart={handleDragStart}
+                onDragEnd={handleDragEnd}
+                transition={{ duration: 0.15, ease: 'easeOut' }}
+            >
+                {orderedTasks.map(({ task, completed, originalIndex }) => (
+                    <TaskItem
+                        key={`${category}-${originalIndex}`}
+                        task={task}
+                        completed={completed}
+                        index={originalIndex}
+                        onToggle={() => onToggleTask(category, originalIndex)}
+                        onUpdate={value =>
+                            onUpdateTask(category, originalIndex, value)
+                        }
+                        placeholderPrefix={placeholderPrefix}
+                        category={category}
+                    />
+                ))}
+            </Reorder.Group>
+        </div>
+    );
+};
+
+export default TaskCategory;

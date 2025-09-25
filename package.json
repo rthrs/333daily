@@ -1,28 +1,40 @@
 {
-  "name": "333daily",
-  "version": "1.0.0",
-  "description": "Daily 333 productivity method list app",
-  "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "release": "git checkout main && git pull origin main && git merge develop && git push origin main && git checkout -"
-  },
-  "dependencies": {
-    "@tailwindcss/postcss": "^4.1.13",
-    "motion": "^12.23.21",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
-  },
-  "devDependencies": {
-    "@types/react": "^19.1.13",
-    "@types/react-dom": "^19.1.9",
-    "@vitejs/plugin-react": "^5.0.3",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.13",
-    "vite": "^6.3.6"
-  }
+    "name": "333daily",
+    "version": "1.0.0",
+    "description": "Daily 333 productivity method list app",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 10",
+        "lint:fix": "eslint . --ext js,jsx --fix",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "release": "git checkout main && git pull origin main && git merge develop && git push origin main && git checkout -"
+    },
+    "dependencies": {
+        "@tailwindcss/postcss": "^4.1.13",
+        "motion": "^12.23.21",
+        "react": "^19.1.1",
+        "react-dom": "^19.1.1"
+    },
+    "devDependencies": {
+        "@types/react": "^19.1.13",
+        "@types/react-dom": "^19.1.9",
+        "@typescript-eslint/eslint-plugin": "^8.44.1",
+        "@typescript-eslint/parser": "^8.44.1",
+        "@vitejs/plugin-react": "^5.0.3",
+        "autoprefixer": "^10.4.21",
+        "eslint": "^9.36.0",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-prettier": "^5.5.4",
+        "eslint-plugin-react": "^7.37.5",
+        "eslint-plugin-react-hooks": "^5.2.0",
+        "postcss": "^8.5.6",
+        "prettier": "^3.6.2",
+        "tailwindcss": "^4.1.13",
+        "vite": "^6.3.6"
+    }
 }

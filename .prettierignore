@@ -1,0 +1,16 @@
+node_modules/
+dist/
+build/
+.next/
+.nuxt/
+.vuepress/dist/
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port/
+coverage/
+.nyc_output/
+*.log
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

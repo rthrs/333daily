@@ -1,79 +1,79 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
-  body {
-    @apply bg-gray-50 text-gray-900;
-  }
-  
-  .dark body {
-    @apply bg-gray-900 text-white;
-  }
+    body {
+        @apply bg-gray-50 text-gray-900;
+    }
+
+    .dark body {
+        @apply bg-gray-900 text-white;
+    }
 }
 
 @layer components {
-  /* Button Components */
-  .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer;
-  }
-  
-  .btn-secondary {
-    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer;
-  }
+    /* Button Components */
+    .btn-primary {
+        @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer;
+    }
 
-  .btn-ghost {
-    @apply bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer border border-gray-300 dark:border-gray-600;
-  }
+    .btn-secondary {
+        @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer;
+    }
 
-  .btn-icon {
-    @apply p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 cursor-pointer border border-gray-300 dark:border-gray-600;
-  }
+    .btn-ghost {
+        @apply bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer border border-gray-300 dark:border-gray-600;
+    }
 
-  .btn-timer {
-    @apply w-full py-2 px-3 rounded-lg text-sm font-medium transition-colors duration-200 cursor-pointer;
-  }
-  
-  /* Interactive Elements */
-  .interactive {
-    @apply cursor-pointer;
-  }
+    .btn-icon {
+        @apply p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 cursor-pointer border border-gray-300 dark:border-gray-600;
+    }
 
-  .checkbox {
-    @apply w-5 h-5 text-blue-600 dark:text-blue-400 rounded focus:ring-blue-500 dark:focus:ring-blue-400 cursor-pointer;
-  }
+    .btn-timer {
+        @apply w-full py-2 px-3 rounded-lg text-sm font-medium transition-colors duration-200 cursor-pointer;
+    }
 
-  .link {
-    @apply text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline hover:no-underline transition-colors duration-200 cursor-pointer;
-  }
-  
-  /* Form Elements */
-  .input-field {
-    @apply w-full bg-white px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-white dark:border-gray-600;
-  }
-  
-  /* Layout Components */
-  .card {
-    @apply bg-white rounded-xl shadow-sm border border-gray-200 p-5 dark:bg-gray-800 dark:border-gray-700;
-  }
-  
-  /* Drag and drop styles - entire item is draggable */
-  .reorder-item-dragging {
-    cursor: grabbing !important;
-    @apply shadow-md;
-  }
-  
-  .reorder-item-dragging * {
-    cursor: grabbing !important;
-  }
+    /* Interactive Elements */
+    .interactive {
+        @apply cursor-pointer;
+    }
 
-  /* Drag handle styles */
-  .drag-handle {
-    @apply cursor-grab active:cursor-grabbing p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-100 rounded hover:bg-gray-100 dark:hover:bg-gray-700;
-  }
-  
-  /* Textarea styles */
-  .task-textarea {
-    @apply w-full bg-transparent px-3 py-2 border-0 rounded-lg focus:outline-none focus:ring-0 resize-none min-h-[2.5rem] overflow-y-auto dark:bg-transparent dark:text-white;
-  }
+    .checkbox {
+        @apply w-5 h-5 text-blue-600 dark:text-blue-400 rounded focus:ring-blue-500 dark:focus:ring-blue-400 cursor-pointer;
+    }
+
+    .link {
+        @apply text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline hover:no-underline transition-colors duration-200 cursor-pointer;
+    }
+
+    /* Form Elements */
+    .input-field {
+        @apply w-full bg-white px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-white dark:border-gray-600;
+    }
+
+    /* Layout Components */
+    .card {
+        @apply bg-white rounded-xl shadow-sm border border-gray-200 p-5 dark:bg-gray-800 dark:border-gray-700;
+    }
+
+    /* Drag and drop styles - entire item is draggable */
+    .reorder-item-dragging {
+        cursor: grabbing !important;
+        @apply shadow-md;
+    }
+
+    .reorder-item-dragging * {
+        cursor: grabbing !important;
+    }
+
+    /* Drag handle styles */
+    .drag-handle {
+        @apply cursor-grab active:cursor-grabbing p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-100 rounded hover:bg-gray-100 dark:hover:bg-gray-700;
+    }
+
+    /* Textarea styles */
+    .task-textarea {
+        @apply w-full bg-transparent px-3 py-2 border-0 rounded-lg focus:outline-none focus:ring-0 resize-none min-h-[2.5rem] overflow-y-auto dark:bg-transparent dark:text-white;
+    }
 }

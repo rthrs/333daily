@@ -32,14 +32,16 @@ The app is fully functional and ready to use. No installation required - just op
 ## 🚀 Getting Started
 
 1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+
+    ```bash
+    npm install
+    ```
 
 2. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
+
+    ```bash
+    npm run dev
+    ```
 
 3. **Open your browser and navigate to `http://localhost:3000`**
 
@@ -56,6 +58,7 @@ The app is fully functional and ready to use. No installation required - just op
 ## 🧠 Oliver Burkeman's 333 Method
 
 This productivity method, popularized by author Oliver Burkeman, helps you structure your day by:
+
 - **3 Hours on Your Most Important Project**: Dedicate focused, uninterrupted time to your primary work
 - **3 Urgent Tasks**: Handle pressing matters that need immediate attention (aim for ~1 hour total)
 - **3 Maintenance Activities**: Daily upkeep tasks and routines (aim for ~30 minutes total)
@@ -79,6 +82,7 @@ This method ensures you make meaningful progress on important work while staying
 The app is deployed and available at [https://333daily.netlify.app/](https://333daily.netlify.app/)
 
 ### Features Available in Demo:
+
 - ✅ Full functionality without installation
 - ✅ Dark/light theme switching
 - ✅ Date navigation and persistence
@@ -87,6 +91,7 @@ The app is deployed and available at [https://333daily.netlify.app/](https://333
 - ✅ PWA installation capability
 
 ### Browser Support:
+
 - ✅ Chrome/Edge (recommended)
 - ✅ Firefox
 - ✅ Safari
@@ -103,6 +108,7 @@ The app can be installed as a Progressive Web App:
 ## 🤝 Contributing
 
 This is a personal productivity tool, but suggestions and improvements are welcome! Feel free to:
+
 - Report bugs or issues
 - Suggest new features
 - Submit pull requests
