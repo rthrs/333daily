@@ -57,7 +57,7 @@ const DateNavigation = ({ onDateChange, onClearAll }) => {
             >
                 <div className="text-center">
                     <h2
-                        className={`text-3xl font-bold hover:opacity-80 transition-opacity cursor-pointer`}
+                        className={`text-3xl font-bold hover:opacity-80 transition-opacity cursor-pointer ${styles.navigation.text}`}
                         onClick={handleCalendarClick}
                     >
                         {formatDate(currentDate)}
