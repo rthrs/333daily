@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Reorder } from 'motion/react'
 import { useDateContext } from '../contexts/DateContext'
 import TaskItem from './TaskItem'
+import { getCategoryColor } from '../constants/categories'
 
 const TaskCategory = ({ 
   title, 
@@ -40,13 +41,7 @@ const TaskCategory = ({
 
   return (
     <div className="card card-dark">
-      <h3 className={`text-lg font-semibold mb-4 ${color} ${
-        color === 'text-red-600' 
-          ? 'dark:text-red-400' 
-          : color === 'text-green-600' 
-            ? 'dark:text-green-400' 
-            : 'dark:text-gray-200'
-      }`}>{title}</h3>
+      <h3 className={`text-lg font-semibold mb-4 ${getCategoryColor(category)}`}>{title}</h3>
       
       <Reorder.Group
         axis="y"

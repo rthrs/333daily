@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Reorder } from 'motion/react'
 import { useDateContext } from '../contexts/DateContext'
+import { getCategoryBackground } from '../constants/categories'
 
 const TaskItem = ({ 
   task, 
@@ -28,14 +29,7 @@ const TaskItem = ({
 
   // Get background color based on category
   const getBackgroundColor = () => {
-    if (color === 'text-red-600') {
-      return 'bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30'
-    } else if (color === 'text-green-600') {
-      return 'bg-green-50 dark:bg-green-900/20 hover:bg-green-100 dark:hover:bg-green-900/30'
-    } else if (color === 'text-blue-600') {
-      return 'bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30'
-    }
-    return 'bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700'
+    return getCategoryBackground(category)
   }
 
   return (

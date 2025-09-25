@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from 'react'
 import { useDateContext } from '../contexts/DateContext'
+import { getCategoryBackground } from '../constants/categories'
 
 const ProjectItem = ({ 
   task, 
   completed, 
   onToggle, 
   onUpdate, 
-  placeholder
+  placeholder,
+  category = 'project'
 }) => {
   const { currentDate } = useDateContext()
   const textareaRef = useRef(null)
@@ -22,7 +24,7 @@ const ProjectItem = ({
   }, [task])
 
   return (
-    <div className="flex items-center px-3 py-1 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-gray-200 dark:border-gray-700 hover:bg-blue-100 dark:hover:bg-blue-900/30">
+    <div className={`flex items-center px-3 py-1 rounded-lg border border-gray-200 dark:border-gray-700 ${getCategoryBackground(category)}`}>
       {/* Checkbox */}
       <input
         type="checkbox"
