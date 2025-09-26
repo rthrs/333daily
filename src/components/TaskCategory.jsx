@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Reorder } from 'motion/react';
 import TaskItem from './TaskItem';
 import { getNavigationTextColor } from '../utils/styleUtils';

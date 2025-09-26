@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDailyData } from '../hooks/useLocalStorage';
 import { useTimer } from '../hooks/useTimer';
 import { MAIN_PROJECT_TARGET_DURATION } from '../utils/timeUtils';
