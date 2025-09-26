@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div className="text-center px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
+        <div className="text-center px-4 py-4 text-sm text-gray-500 dark:text-gray-500">
             <p>
                 Start with 3 hours on your most important project, then tackle
                 urgent tasks and maintenance activities.
