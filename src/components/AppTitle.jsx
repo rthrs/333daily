@@ -12,8 +12,8 @@ const AppTitle = () => {
             </div>
 
             <p className="text-gray-600 dark:text-gray-400 m-4 text-center">
-                Oliver Burkeman's 333 method: 3 hours to your most important
-                project, 3 urgent tasks, 3 maintenance activities.
+                Oliver Burkeman&apos;s 333 method: 3 hours to your most
+                important project, 3 urgent tasks, 3 maintenance activities.
             </p>
         </div>
     );
