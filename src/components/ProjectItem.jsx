@@ -1,14 +1,7 @@
 import React from 'react';
 import BaseItem from './BaseItem';
 
-const ProjectItem = ({
-    task,
-    completed,
-    onToggle,
-    onUpdate,
-    placeholder,
-    category = 'project',
-}) => {
+const ProjectItem = ({ task, completed, onToggle, onUpdate, placeholder, category = 'project' }) => {
     return (
         <BaseItem
             task={task}

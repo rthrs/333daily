@@ -2,15 +2,7 @@ import { useState } from 'react';
 import { Reorder } from 'motion/react';
 import BaseItem from './BaseItem';
 
-const TaskItem = ({
-    task,
-    completed,
-    index,
-    onToggle,
-    onUpdate,
-    placeholderPrefix,
-    category,
-}) => {
+const TaskItem = ({ task, completed, index, onToggle, onUpdate, placeholderPrefix, category }) => {
     const [isDragging, setIsDragging] = useState(false);
 
     return (
@@ -40,11 +32,7 @@ const TaskItem = ({
                 category={category}
                 isDragging={isDragging}
             >
-                <svg
-                    className="w-4 h-4"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <circle cx="8" cy="6" r="1.5" />
                     <circle cx="8" cy="12" r="1.5" />
                     <circle cx="8" cy="18" r="1.5" />

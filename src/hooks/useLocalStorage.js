@@ -5,10 +5,7 @@ import { clone, deepMergeRight } from '../utils/objectUtils';
 export const useDailyData = currentDate => {
     const storageKey = `333daily_${currentDate}`;
 
-    const [dailyData, setDailyData] = useLocalStorage(
-        storageKey,
-        INITIAL_DAILY_DATA
-    );
+    const [dailyData, setDailyData] = useLocalStorage(storageKey, INITIAL_DAILY_DATA);
 
     const updateCurrentDayData = updates => {
         if (updates === null || updates === undefined) {
@@ -35,9 +32,7 @@ export const useDailyData = currentDate => {
 };
 
 export const useLocalStorage = (key, initialValue) => {
-    const [currentValue, setCurrentValue] = useState(() =>
-        getStoredValue(key, initialValue)
-    );
+    const [currentValue, setCurrentValue] = useState(() => getStoredValue(key, initialValue));
 
     useEffect(() => {
         setCurrentValue(getStoredValue(key, initialValue));
@@ -45,14 +40,9 @@ export const useLocalStorage = (key, initialValue) => {
 
     const setValue = value => {
         try {
-            let nextValue =
-                typeof value === 'function' ? value(currentValue) : value;
+            let nextValue = typeof value === 'function' ? value(currentValue) : value;
 
-            if (
-                typeof nextValue === 'object' &&
-                nextValue !== null &&
-                !Array.isArray(nextValue)
-            ) {
+            if (typeof nextValue === 'object' && nextValue !== null && !Array.isArray(nextValue)) {
                 nextValue = {
                     ...nextValue,
                     lastUpdated: new Date().toISOString(),

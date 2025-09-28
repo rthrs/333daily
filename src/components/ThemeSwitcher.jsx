@@ -11,12 +11,7 @@ const ThemeSwitcher = () => {
         >
             {isDark ? (
                 // Sun icon for light mode
-                <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                >
+                <svg className="w-5 h-5" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -26,12 +21,7 @@ const ThemeSwitcher = () => {
                 </svg>
             ) : (
                 // Moon icon for dark mode
-                <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                >
+                <svg className="w-5 h-5" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                         strokeLinecap="round"
                         strokeLinejoin="round"

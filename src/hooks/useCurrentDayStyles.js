@@ -32,10 +32,7 @@ const getDayStyles = baseColor => {
  */
 export const useCurrentDateStyles = () => {
     const { currentDateKind } = useDateContext();
-    const baseColor = useMemo(
-        () => getBaseColor(currentDateKind),
-        [currentDateKind]
-    );
+    const baseColor = useMemo(() => getBaseColor(currentDateKind), [currentDateKind]);
     const styles = useMemo(() => getDayStyles(baseColor), [baseColor]);
 
     return { baseColor, styles };

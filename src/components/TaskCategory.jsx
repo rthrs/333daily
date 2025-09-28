@@ -38,11 +38,7 @@ const TaskCategory = ({
 
     return (
         <div className="card">
-            <h3
-                className={`text-lg font-semibold mb-4 ${getNavigationTextColor(baseColor)}`}
-            >
-                {title}
-            </h3>
+            <h3 className={`text-lg font-semibold mb-4 ${getNavigationTextColor(baseColor)}`}>{title}</h3>
 
             <Reorder.Group
                 axis="y"
@@ -63,9 +59,7 @@ const TaskCategory = ({
                         completed={completed}
                         index={originalIndex}
                         onToggle={() => onToggleTask(category, originalIndex)}
-                        onUpdate={value =>
-                            onUpdateTask(category, originalIndex, value)
-                        }
+                        onUpdate={value => onUpdateTask(category, originalIndex, value)}
                         placeholderPrefix={placeholderPrefix}
                         category={category}
                     />

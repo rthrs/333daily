@@ -41,10 +41,7 @@ export const DateProvider = ({ children, onDateChange }) => {
         return newDate;
     };
 
-    const currentDateKind = useMemo(
-        () => getDayKind(currentDate),
-        [currentDate]
-    );
+    const currentDateKind = useMemo(() => getDayKind(currentDate), [currentDate]);
 
     const value = {
         currentDate,
@@ -56,7 +53,5 @@ export const DateProvider = ({ children, onDateChange }) => {
         currentDateKind,
     };
 
-    return (
-        <DateContext.Provider value={value}>{children}</DateContext.Provider>
-    );
+    return <DateContext.Provider value={value}>{children}</DateContext.Provider>;
 };

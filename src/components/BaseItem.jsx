@@ -4,16 +4,7 @@ import { useTheme } from '../contexts/ThemeContext';
 import { getTaskBackground, getTaskBorder } from '../utils/styleUtils';
 import { useCurrentDateStyles } from '../hooks/useCurrentDateStyles';
 
-const BaseItem = ({
-    task,
-    completed,
-    onToggle,
-    onUpdate,
-    placeholder,
-    category,
-    children,
-    className = '',
-}) => {
+const BaseItem = ({ task, completed, onToggle, onUpdate, placeholder, category, children, className = '' }) => {
     const { isDark } = useTheme();
     const { currentDate } = useDateContext();
 
@@ -27,8 +18,7 @@ const BaseItem = ({
             // Reset height to 'auto' first to get accurate scrollHeight measurement
             // This ensures the textarea can both shrink and grow properly
             textareaRef.current.style.height = 'auto';
-            textareaRef.current.style.height =
-                textareaRef.current.scrollHeight + 'px';
+            textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
         }
     }, [task]);
 
@@ -39,12 +29,7 @@ const BaseItem = ({
             <div className="flex items-center space-x-1 h-[2.5rem]">
                 {children}
 
-                <input
-                    type="checkbox"
-                    checked={completed}
-                    onChange={onToggle}
-                    className="size-4 cursor-pointer"
-                />
+                <input type="checkbox" checked={completed} onChange={onToggle} className="size-4 cursor-pointer" />
             </div>
 
             <textarea

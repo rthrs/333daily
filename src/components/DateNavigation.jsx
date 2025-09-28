@@ -6,13 +6,7 @@ import { useCurrentDateStyles } from '../hooks/useCurrentDateStyles';
 
 const DateNavigation = ({ onDateChange, onClearAll }) => {
     const { isDark } = useTheme();
-    const {
-        currentDate,
-        goToPreviousDay,
-        goToNextDay,
-        goToToday,
-        handleDateChange,
-    } = useDateContext();
+    const { currentDate, goToPreviousDay, goToNextDay, goToToday, handleDateChange } = useDateContext();
     const [showDatePicker, setShowDatePicker] = useState(false);
     const dateInputRef = useRef(null);
 
@@ -41,11 +35,7 @@ const DateNavigation = ({ onDateChange, onClearAll }) => {
 
     // Reusable button component
     const NavigationButton = ({ onClick, title, children, className = '' }) => (
-        <button
-            onClick={onClick}
-            className={`btn-icon ${className}`}
-            title={title}
-        >
+        <button onClick={onClick} className={`btn-icon ${className}`} title={title}>
             {children}
         </button>
     );
@@ -62,9 +52,7 @@ const DateNavigation = ({ onDateChange, onClearAll }) => {
                     >
                         {formatDate(currentDate)}
                     </h2>
-                    <p className={`text-lg font-light mt-1`}>
-                        {getDayName(currentDate)}
-                    </p>
+                    <p className={`text-lg font-light mt-1`}>{getDayName(currentDate)}</p>
 
                     {/* Hidden date input positioned under date */}
                     {showDatePicker && (
@@ -73,9 +61,7 @@ const DateNavigation = ({ onDateChange, onClearAll }) => {
                             type="date"
                             name="date"
                             value={currentDate}
-                            onChange={e =>
-                                handleDateInputChange(e.target.value)
-                            }
+                            onChange={e => handleDateInputChange(e.target.value)}
                             className="sr-only"
                             style={{
                                 colorScheme: isDark ? 'dark' : 'light',
@@ -94,18 +80,8 @@ const DateNavigation = ({ onDateChange, onClearAll }) => {
                         }}
                         title="Previous day"
                     >
-                        <svg
-                            className="w-5 h-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M15 19l-7-7 7-7"
-                            />
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                     </NavigationButton>
 
@@ -116,38 +92,17 @@ const DateNavigation = ({ onDateChange, onClearAll }) => {
                         }}
                         title="Next day"
                     >
-                        <svg
-                            className="w-5 h-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M9 5l7 7-7 7"
-                            />
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                     </NavigationButton>
 
-                    <NavigationButton
-                        onClick={handleTodayClick}
-                        title="Go to today"
-                    >
+                    <NavigationButton onClick={handleTodayClick} title="Go to today">
                         <span className="text-sm">Today</span>
                     </NavigationButton>
 
-                    <NavigationButton
-                        onClick={onClearAll}
-                        title="Clear all data"
-                    >
-                        <svg
-                            className="w-5 h-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
+                    <NavigationButton onClick={onClearAll} title="Clear all data">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"

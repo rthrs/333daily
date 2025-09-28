@@ -47,14 +47,6 @@ export default [
         },
     },
     {
-        ignores: [
-            'node_modules/',
-            'dist/',
-            'build/',
-            '*.log',
-            'package-lock.json',
-            'yarn.lock',
-            'pnpm-lock.yaml',
-        ],
+        ignores: ['node_modules/', 'dist/', 'build/', '*.log', 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml'],
     },
 ];

@@ -12,8 +12,7 @@ import DateNavigation from './DateNavigation';
 
 function HomePage() {
     const { currentDate } = useDateContext();
-    const [dailyData, updateDailyData, reorderTasks] =
-        useDailyData(currentDate);
+    const [dailyData, updateDailyData, reorderTasks] = useDailyData(currentDate);
     const { isTimerRunning, currentTimer, startTimer, stopTimer } = useTimer();
 
     const { tasks, completedTasks, timeSpent, taskOrder } = dailyData;
@@ -52,9 +51,7 @@ function HomePage() {
             updateDailyData({
                 tasks: {
                     ...tasks,
-                    [category]: tasks[category].map((task, i) =>
-                        i === index ? value : task
-                    ),
+                    [category]: tasks[category].map((task, i) => (i === index ? value : task)),
                 },
             });
         }
@@ -73,8 +70,8 @@ function HomePage() {
             const currentOrder = taskOrder[category];
 
             // Toggle the completion status
-            const newCompletedTasks = completedTasks[category].map(
-                (completed, i) => (i === index ? !completed : completed)
+            const newCompletedTasks = completedTasks[category].map((completed, i) =>
+                i === index ? !completed : completed
             );
 
             // Check if the task is being completed (not uncompleted)
@@ -84,10 +81,7 @@ function HomePage() {
             if (isBeingCompleted) {
                 // Move completed task to the bottom
                 const originalIndex = currentOrder.indexOf(index);
-                newOrder = [
-                    ...currentOrder.filter((_, i) => i !== originalIndex),
-                    index,
-                ];
+                newOrder = [...currentOrder.filter((_, i) => i !== originalIndex), index];
             } else {
                 // When uncompleting, keep the current order (don't move back up)
                 newOrder = currentOrder;
@@ -108,18 +102,12 @@ function HomePage() {
 
     const getCompletionPercentage = () => {
         const totalTasks = 7; // 1 project + 3 urgent + 3 maintenance
-        const completedCount = Object.values(completedTasks)
-            .flat()
-            .filter(Boolean).length;
+        const completedCount = Object.values(completedTasks).flat().filter(Boolean).length;
         return Math.round((completedCount / totalTasks) * 100);
     };
 
     const clearAllTasks = () => {
-        if (
-            window.confirm(
-                'Are you sure you want to clear all tasks and time tracking for today?'
-            )
-        ) {
+        if (window.confirm('Are you sure you want to clear all tasks and time tracking for today?')) {
             updateDailyData(null);
         }
     };
@@ -130,14 +118,9 @@ function HomePage() {
                 <AppTitle />
 
                 <div className="flex flex-col space-y-5">
-                    <DateNavigation
-                        onDateChange={handleDateChangeWithTimer}
-                        onClearAll={clearAllTasks}
-                    />
+                    <DateNavigation onDateChange={handleDateChangeWithTimer} onClearAll={clearAllTasks} />
 
-                    <ProgressIndicator
-                        completionPercentage={getCompletionPercentage()}
-                    />
+                    <ProgressIndicator completionPercentage={getCompletionPercentage()} />
                     <ProjectCategory
                         title="3 Hours - Most Important Project"
                         tasks={tasks.project}

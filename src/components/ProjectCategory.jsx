@@ -24,11 +24,7 @@ const ProjectCategory = ({
     return (
         <div className="card card-dark mb-6">
             <div className="flex justify-between mb-4 flex-col md:flex-row">
-                <h3
-                    className={`text-lg font-semibold ${getNavigationTextColor(baseColor)} mb-3 md:mb-0`}
-                >
-                    {title}
-                </h3>
+                <h3 className={`text-lg font-semibold ${getNavigationTextColor(baseColor)} mb-3 md:mb-0`}>{title}</h3>
                 <div className="flex items-center space-x-3">
                     <div className="text-sm font-light text-gray-600 dark:text-gray-300">
                         {formatTime(timeSpent)} / {formatTime(timeTarget)}
@@ -36,28 +32,16 @@ const ProjectCategory = ({
                     <button
                         onClick={() => onStartTimer(category)}
                         className="btn-icon p-1 rounded-full"
-                        title={
-                            isTimerRunning && currentTimer === category
-                                ? 'Stop Timer'
-                                : 'Start Timer'
-                        }
+                        title={isTimerRunning && currentTimer === category ? 'Stop Timer' : 'Start Timer'}
                     >
                         {isTimerRunning && currentTimer === category ? (
                             // Stop icon
-                            <svg
-                                className="w-4 h-4"
-                                fill="currentColor"
-                                viewBox="0 0 24 24"
-                            >
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M6 6h12v12H6z" />
                             </svg>
                         ) : (
                             // Play icon
-                            <svg
-                                className="w-4 h-4"
-                                fill="currentColor"
-                                viewBox="0 0 24 24"
-                            >
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M8 5v14l11-7z" />
                             </svg>
                         )}
@@ -67,10 +51,7 @@ const ProjectCategory = ({
 
             {/* Time progress bar */}
             <div className="mb-4">
-                <ProgressBar
-                    progress={progress}
-                    progressColor={styles.progress}
-                />
+                <ProgressBar progress={progress} progressColor={styles.progress} />
             </div>
 
             <div className="space-y-3">
