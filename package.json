@@ -17,7 +17,7 @@
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "postinstall": "npm audit fix --force",
-        "release": "git checkout main && git pull origin main && git merge develop && git push origin main && git checkout -"
+        "release": "bash -c 'read -p \"Release to main? (y/N) \" ans && [ \"$ans\" = \"y\" ] && git checkout main && git pull origin main && git merge develop && git push origin main && git checkout -'"
     },
     "dependencies": {
         "@tailwindcss/postcss": "^4.1.13",
