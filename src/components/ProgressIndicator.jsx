@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDateContext } from '../contexts/DateContext';
 import { getDayText } from '../utils/dateUtils';
 import { useCurrentDateStyles } from '../hooks/useCurrentDateStyles';

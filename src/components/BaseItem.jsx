@@ -20,7 +20,7 @@ const BaseItem = ({ task, completed, onToggle, onUpdate, placeholder, category, 
             textareaRef.current.style.height = 'auto';
             textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
         }
-    }, [task]);
+    }, [task, isDark]);
 
     return (
         <div
@@ -34,7 +34,7 @@ const BaseItem = ({ task, completed, onToggle, onUpdate, placeholder, category, 
 
             <textarea
                 ref={textareaRef}
-                key={`${category}-input-${currentDate}-${isDark}`}
+                key={`${category}-input-${currentDate}`}
                 value={task}
                 onChange={e => onUpdate(e.target.value)}
                 placeholder={placeholder}

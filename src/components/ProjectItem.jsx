@@ -1,4 +1,3 @@
-import React from 'react';
 import BaseItem from './BaseItem';
 
 const ProjectItem = ({ task, completed, onToggle, onUpdate, placeholder, category = 'project' }) => {
