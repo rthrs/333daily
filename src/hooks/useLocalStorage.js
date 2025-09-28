@@ -1,86 +1,22 @@
 import { useState, useEffect } from 'react';
-import { DEFAULT_TASK_ORDER } from '../constants';
-
-export const useLocalStorage = (key, initialValue) => {
-    const [storedValue, setStoredValue] = useState(() => {
-        try {
-            const item = window.localStorage.getItem(key);
-            return item ? JSON.parse(item) : initialValue;
-        } catch (error) {
-            console.error(`Error reading localStorage key "${key}":`, error);
-            console.info(`Set initial localStorage valuer for key "${key}":`);
-            window.localStorage.setItem(key, JSON.stringify(initialValue));
-            return initialValue;
-        }
-    });
-
-    const setValue = value => {
-        try {
-            // Handle both direct values and function updates (like React setState)
-            const newValue =
-                typeof value === 'function' ? value(storedValue) : value;
-            setStoredValue(newValue);
-            window.localStorage.setItem(key, JSON.stringify(newValue));
-        } catch (error) {
-            console.error(`Error setting localStorage key "${key}":`, error);
-        }
-    };
-
-    // Update stored value when key changes
-    useEffect(() => {
-        try {
-            const item = window.localStorage.getItem(key);
-            if (item) {
-                setStoredValue(JSON.parse(item));
-            } else {
-                setStoredValue(initialValue);
-            }
-        } catch (error) {
-            console.error(`Error reading localStorage key "${key}":`, error);
-            setStoredValue(initialValue);
-        }
-    }, [key, initialValue]);
-
-    return [storedValue, setValue];
-};
-
-const initialDailyData = {
-    tasks: {
-        project: '',
-        urgent: ['', '', ''],
-        maintenance: ['', '', ''],
-    },
-    completedTasks: {
-        project: false,
-        urgent: [false, false, false],
-        maintenance: [false, false, false],
-    },
-    timeSpent: {
-        project: 0,
-    },
-    taskOrder: {
-        urgent: DEFAULT_TASK_ORDER,
-        maintenance: DEFAULT_TASK_ORDER,
-    },
-    lastUpdated: new Date().toISOString(),
-};
+import { INITIAL_DAILY_DATA } from '../constants';
+import { clone, deepMergeRight } from '../utils/objectUtils';
 
 export const useDailyData = currentDate => {
     const storageKey = `333daily_${currentDate}`;
 
     const [dailyData, setDailyData] = useLocalStorage(
         storageKey,
-        initialDailyData
+        INITIAL_DAILY_DATA
     );
 
     const updateCurrentDayData = updates => {
         if (updates === null || updates === undefined) {
-            setDailyData(initialDailyData);
+            setDailyData(INITIAL_DAILY_DATA);
         } else {
             setDailyData(prev => ({
                 ...prev,
                 ...updates,
-                lastUpdated: new Date().toISOString(),
             }));
         }
     };
@@ -92,9 +28,62 @@ export const useDailyData = currentDate => {
                 ...prev.taskOrder,
                 [category]: newOrder,
             },
-            lastUpdated: new Date().toISOString(),
         }));
     };
 
     return [dailyData, updateCurrentDayData, reorderTasks];
+};
+
+export const useLocalStorage = (key, initialValue) => {
+    const [currentValue, setCurrentValue] = useState(() =>
+        getStoredValue(key, initialValue)
+    );
+
+    useEffect(() => {
+        setCurrentValue(getStoredValue(key, initialValue));
+    }, [key, initialValue]);
+
+    const setValue = value => {
+        try {
+            let nextValue =
+                typeof value === 'function' ? value(currentValue) : value;
+
+            if (
+                typeof nextValue === 'object' &&
+                nextValue !== null &&
+                !Array.isArray(nextValue)
+            ) {
+                nextValue = {
+                    ...nextValue,
+                    lastUpdated: new Date().toISOString(),
+                };
+            }
+            setCurrentValue(nextValue);
+            putStoredValue(key, nextValue);
+        } catch (error) {
+            console.error(`Error setting localStorage key "${key}":`, error);
+        }
+    };
+
+    return [currentValue, setValue];
+};
+
+const getStoredValue = (key, initialValue) => {
+    const defaultResponse = clone(initialValue);
+
+    try {
+        const item = window.localStorage.getItem(key);
+
+        if (item) {
+            return deepMergeRight(defaultResponse, JSON.parse(item));
+        }
+    } catch (error) {
+        console.error(`Error reading localStorage key "${key}":`, error);
+    }
+
+    return defaultResponse;
+};
+
+const putStoredValue = (key, nextValue) => {
+    window.localStorage.setItem(key, JSON.stringify(nextValue));
 };

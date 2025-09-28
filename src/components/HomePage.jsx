@@ -2,14 +2,13 @@ import { useEffect } from 'react';
 import { useDailyData } from '../hooks/useLocalStorage';
 import { useTimer } from '../hooks/useTimer';
 import { MAIN_PROJECT_TARGET_DURATION } from '../utils/timeUtils';
+import { useDateContext } from '../contexts/DateContext';
 import ProgressIndicator from './ProgressIndicator';
 import ProjectCategory from './ProjectCategory';
 import TaskCategory from './TaskCategory';
 import Footer from './Footer';
-import { useDateContext } from '../contexts/DateContext';
 import AppTitle from './AppTitle';
 import DateNavigation from './DateNavigation';
-import { DEFAULT_TASK_ORDER } from '../constants';
 
 function HomePage() {
     const { currentDate } = useDateContext();
@@ -17,15 +16,7 @@ function HomePage() {
         useDailyData(currentDate);
     const { isTimerRunning, currentTimer, startTimer, stopTimer } = useTimer();
 
-    const {
-        tasks,
-        completedTasks,
-        timeSpent,
-        taskOrder = {
-            urgent: DEFAULT_TASK_ORDER,
-            maintenance: DEFAULT_TASK_ORDER,
-        },
-    } = dailyData;
+    const { tasks, completedTasks, timeSpent, taskOrder } = dailyData;
 
     // Handle date change - stop timer when changing days
     const handleDateChangeWithTimer = () => {
@@ -34,7 +25,6 @@ function HomePage() {
         }
     };
 
-    // Timer effect - updates time every second
     useEffect(() => {
         if (isTimerRunning && currentTimer === 'project') {
             const interval = setInterval(() => {
@@ -80,7 +70,7 @@ function HomePage() {
             });
         } else {
             // Get the current task order for this category
-            const currentOrder = taskOrder[category] || DEFAULT_TASK_ORDER;
+            const currentOrder = taskOrder[category];
 
             // Toggle the completion status
             const newCompletedTasks = completedTasks[category].map(

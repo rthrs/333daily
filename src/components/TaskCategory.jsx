@@ -18,7 +18,6 @@ const TaskCategory = ({
     const [isDragging, setIsDragging] = useState(false);
     const { baseColor } = useCurrentDateStyles();
 
-    // Get ordered tasks based on taskOrder
     const orderedTasks = taskOrder.map(orderIndex => ({
         task: tasks[orderIndex],
         completed: completedTasks[orderIndex],
@@ -26,8 +25,6 @@ const TaskCategory = ({
     }));
 
     const handleReorder = newOrder => {
-        // newOrder contains the original indices in their new order
-        // Convert to the new taskOrder array
         onReorderTasks(category, newOrder);
     };
 
@@ -52,9 +49,8 @@ const TaskCategory = ({
                 values={orderedTasks.map(task => task.originalIndex)}
                 onReorder={handleReorder}
                 className={`space-y-3 transition-all duration-150 ${
-                    isDragging
-                        ? 'bg-blue-50 dark:bg-blue-900 border-2 border-dashed border-blue-300 dark:border-blue-600 rounded-lg p-2'
-                        : ''
+                    isDragging &&
+                    'bg-blue-50 dark:bg-blue-900 border-2 border-dashed border-blue-300 dark:border-blue-600 rounded-lg p-2'
                 }`}
                 onDragStart={handleDragStart}
                 onDragEnd={handleDragEnd}
