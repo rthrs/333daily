@@ -1,8 +1,12 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useDateContext } from '../contexts/DateContext';
 import { formatDate as formatDate, getDayName } from '../utils/dateUtils';
 import { useCurrentDateStyles } from '../hooks/useCurrentDateStyles';
+import NavigationIconButton from './NavigationIconButton';
+import ChevronLeftIcon from './icons/ChevronLeftIcon';
+import ChevronRightIcon from './icons/ChevronRightIcon';
+import TrashIcon from './icons/TrashIcon';
 
 const DateNavigation = ({ onDateChange, onClearAll }) => {
     const { isDark } = useTheme();
@@ -32,13 +36,6 @@ const DateNavigation = ({ onDateChange, onClearAll }) => {
         goToToday();
         onDateChange && onDateChange(currentDate);
     };
-
-    // Reusable button component
-    const NavigationButton = ({ onClick, title, children, className = '' }) => (
-        <button onClick={onClick} className={`btn-icon ${className}`} title={title}>
-            {children}
-        </button>
-    );
 
     return (
         <div className={`card p-0 dark:text-gray-100`}>
@@ -71,46 +68,34 @@ const DateNavigation = ({ onDateChange, onClearAll }) => {
                     )}
                 </div>
 
-                {/* Button row below */}
                 <div className="flex items-center justify-center space-x-2">
-                    <NavigationButton
+                    <NavigationIconButton
                         onClick={() => {
                             const newDate = goToPreviousDay();
                             onDateChange && onDateChange(newDate);
                         }}
                         title="Previous day"
                     >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                        </svg>
-                    </NavigationButton>
+                        <ChevronLeftIcon className="w-5 h-5" />
+                    </NavigationIconButton>
 
-                    <NavigationButton
+                    <NavigationIconButton
                         onClick={() => {
                             const newDate = goToNextDay();
                             onDateChange && onDateChange(newDate);
                         }}
                         title="Next day"
                     >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                    </NavigationButton>
+                        <ChevronRightIcon className="w-5 h-5" />
+                    </NavigationIconButton>
 
-                    <NavigationButton onClick={handleTodayClick} title="Go to today">
+                    <NavigationIconButton onClick={handleTodayClick} title="Go to today">
                         <span className="text-sm">Today</span>
-                    </NavigationButton>
+                    </NavigationIconButton>
 
-                    <NavigationButton onClick={onClearAll} title="Clear all data">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                            />
-                        </svg>
-                    </NavigationButton>
+                    <NavigationIconButton onClick={onClearAll} title="Clear all data">
+                        <TrashIcon className="w-5 h-5" />
+                    </NavigationIconButton>
                 </div>
             </div>
         </div>

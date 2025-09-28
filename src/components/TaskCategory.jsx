@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Reorder } from 'motion/react';
-import TaskItem from './TaskItem';
 import { getNavigationTextColor } from '../utils/styleUtils';
 import { useCurrentDateStyles } from '../hooks/useCurrentDateStyles';
+import TaskItem from './TaskItem';
 
 const TaskCategory = ({
     title,

@@ -4,6 +4,8 @@ import ProjectItem from './ProjectItem';
 import ProgressBar from './ProgressBar';
 import { getNavigationTextColor } from '../utils/styleUtils';
 import { useCurrentDateStyles } from '../hooks/useCurrentDateStyles';
+import StopIcon from './icons/StopIcon';
+import PlayIcon from './icons/PlayIcon';
 
 const ProjectCategory = ({
     title,
@@ -35,15 +37,9 @@ const ProjectCategory = ({
                         title={isTimerRunning && currentTimer === category ? 'Stop Timer' : 'Start Timer'}
                     >
                         {isTimerRunning && currentTimer === category ? (
-                            // Stop icon
-                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M6 6h12v12H6z" />
-                            </svg>
+                            <StopIcon className="w-4 h-4" />
                         ) : (
-                            // Play icon
-                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z" />
-                            </svg>
+                            <PlayIcon className="w-4 h-4" />
                         )}
                     </button>
                 </div>
